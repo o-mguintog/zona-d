@@ -1,0 +1,35 @@
+--Implementa los paquetes
+
+/ip hotspot user profile add name=Zona-D-1Hr-Corrido address-pool=hs-pool-12 session-timeout=01:00:00 keepalive-timeout=01:00:00 status-autorefresh=01:00:00 shared-users=1  add-mac-cookie=yes mac-cookie-timeout=01:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-2Hr-Corrido address-pool=hs-pool-12 session-timeout=02:00:00 keepalive-timeout=02:00:00 status-autorefresh=02:00:00 shared-users=1  add-mac-cookie=yes mac-cookie-timeout=02:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-24Hr-Corrido address-pool=hs-pool-12 session-timeout=24:00:00 keepalive-timeout=24:00:00 status-autorefresh=24:00:00 shared-users=1  add-mac-cookie=yes mac-cookie-timeout=24:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-1Hr-Pausado address-pool=hs-pool-12 keepalive-timeout=00:02:00 status-autorefresh=00:01:00 shared-users=1  add-mac-cookie=yes rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-2Hr-Pausado address-pool=hs-pool-12 keepalive-timeout=00:02:00 status-autorefresh=00:01:00 shared-users=1  add-mac-cookie=yes rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-24Hr-Pausado address-pool=hs-pool-12 keepalive-timeout=00:02:00 status-autorefresh=00:01:00 shared-users=1  add-mac-cookie=yes rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-1Hr2-Corrido address-pool=hs-pool-12 session-timeout=01:00:00 keepalive-timeout=01:00:00 status-autorefresh=01:00:00 shared-users=2  add-mac-cookie=yes mac-cookie-timeout=01:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-2Hr2-Corrido address-pool=hs-pool-12 session-timeout=02:00:00 keepalive-timeout=02:00:00 status-autorefresh=02:00:00 shared-users=2  add-mac-cookie=yes mac-cookie-timeout=02:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-24Hr2-Corrido address-pool=hs-pool-12 session-timeout=24:00:00 keepalive-timeout=24:00:00 status-autorefresh=24:00:00 shared-users=2  add-mac-cookie=yes mac-cookie-timeout=24:00:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-Flash-Corrido address-pool=hs-pool-12 session-timeout=00:30:00 keepalive-timeout=00:30:00 status-autorefresh=00:30:00 shared-users=1  add-mac-cookie=yes mac-cookie-timeout=00:30:00 rate-limit=10M/10M;
+/ip hotspot user profile add name=Zona-D-Mensual-Corrido address-pool=hs-pool-12 session-timeout=30d  keepalive-timeout=30d status-autorefresh=30d shared-users=1  add-mac-cookie=yes mac-cookie-timeout=30d rate-limit=10M/10M;
+
+
+
+--Agrega la promoción genérica y usuario promoción
+
+dev
+/ip hotspot user profile add name=PROMO address-pool=hs-pool-7 session-timeout=9d0:00:00 keepalive-timeout=9d00:00:00 status-autorefresh=9d00:00:00 shared-users=100  add-mac-cookie=yes mac-cookie-timeout=9d00:00:00;
+ip hotspot user add name=promo password=1234 server=hotspot1 profile=PROMO limit-uptime=9d00:00:00;
+
+
+--prod
+/ip hotspot user profile add name=PROMO address-pool=hs-pool-12 session-timeout=9d0:00:00 keepalive-timeout=9d00:00:00 status-autorefresh=9d00:00:00 shared-users=100  add-mac-cookie=yes mac-cookie-timeout=9d00:00:00;
+/ip hotspot user add name=promo password=1234 server=hotspot1 profile=PROMO limit-uptime=9d00:00:00;
+
+
+--Agrega la regla para no compartir por bluetooth
+ /ip firewall mangle add chain=postrouting dst-address=10.5.50.0/24 action=change-ttl new-ttl=set:1;
+ /ip firewall mangle set comment=BLOQUEO DE BLUETOOTH;
+ 
+ 
+ 
+ /ip hotspot user profile add name=Zona-D-1Hr-Corrido address-pool=hs-pool-7 session-timeout=01:00:00 keepalive-timeout=01:00:00 status-autorefresh=01:00:00 shared-users=1  add-mac-cookie=yes mac-cookie-timeout=01:00:00
