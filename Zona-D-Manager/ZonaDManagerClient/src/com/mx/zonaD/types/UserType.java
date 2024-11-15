@@ -110,6 +110,36 @@ public class UserType implements java.io.Serializable{
      * Password
      */
     private String password9;
+    
+    /**
+     * Nombre de usuario.
+     */
+    private String username10;
+
+    /**
+     * Password
+     */
+    private String password10;
+    
+    /**
+     * Nombre de usuario.
+     */
+    private String username11;
+
+    /**
+     * Password
+     */
+    private String password11;
+    
+    /**
+     * Nombre de usuario.
+     */
+    private String username12;
+
+    /**
+     * Password
+     */
+    private String password12;
 
 
     /**
@@ -271,4 +301,51 @@ public class UserType implements java.io.Serializable{
         return title;
     }
 
+    public void setUsername10(String username10) {
+        this.username10 = username10;
+    }
+
+    public String getUsername10() {
+        return username10;
+    }
+
+    public void setPassword10(String password10) {
+        this.password10 = password10;
+    }
+
+    public String getPassword10() {
+        return password10;
+    }
+
+    public void setUsername11(String username11) {
+        this.username11 = username11;
+    }
+
+    public String getUsername11() {
+        return username11;
+    }
+
+    public void setPassword11(String password11) {
+        this.password11 = password11;
+    }
+
+    public String getPassword11() {
+        return password11;
+    }
+
+    public void setUsername12(String username12) {
+        this.username12 = username12;
+    }
+
+    public String getUsername12() {
+        return username12;
+    }
+
+    public void setPassword12(String password12) {
+        this.password12 = password12;
+    }
+
+    public String getPassword12() {
+        return password12;
+    }
 }

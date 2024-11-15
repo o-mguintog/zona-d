@@ -77,7 +77,7 @@ public class ZonaDServices {
             //Genera la conexión a mikrotik
             connect();
             
-            userGroup = createUsers(prefijo,9,paquete);
+            userGroup = createUsers(prefijo,12,paquete);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -164,6 +164,11 @@ public class ZonaDServices {
         packages.put("Zona-D-1Hr2-Corrido", "02:00:00");
         packages.put("Zona-D-2Hr2-Corrido", "02:00:00");
         packages.put("Zona-D-24Hr2-Corrido", "24:00:00");
+        packages.put("Zona-D-Flash-Corrido", "00:30:00");
+        packages.put("Zona-D-Mensual-Corrido", "30d");
+        packages.put("Zona-D-Quincenal-Corrido", "15d");
+        packages.put("Zona-D-Semanal-Corrido", "15d");
+        
         
         limit= packages.get(paquete);
         user= prefijo+"-"+password;        
@@ -252,6 +257,18 @@ public class ZonaDServices {
                 userPackage.setUsername9(username);
                 userPackage.setPassword9(password);
                 break;            
+            case 10:
+                userPackage.setUsername10(username);
+                userPackage.setPassword10(password);
+                break;        
+            case 11:
+                userPackage.setUsername11(username);
+                userPackage.setPassword11(password);
+                break;        
+            case 12:
+                userPackage.setUsername12(username);
+                userPackage.setPassword12(password);
+                break;        
         }
         
     }
@@ -271,15 +288,20 @@ public class ZonaDServices {
         List<UserType> userGroups = new ArrayList<UserType>();
         
         //Genera grupo de fichas de 1 hr, equivalente a 24 fichas
-        for(int ij=0;ij<2;ij++){
+        //for(int ij=0;ij<2;ij++){
 
             //Crea el primer grupo de 12 usuarios por paquete
             UserType userGroup = null;
-            userGroup = services.createUsers9Template("u24s","Zona-D-24Hr2-Corrido");
-            userGroup.setTitle("1 Hr Corrido");
-            userGroups.add(userGroup);        
+            userGroup = services.createUsers9Template("d24","Zona-D-24Hr-Corrido");
+            userGroup.setTitle("Plan x Día");
+            userGroups.add(userGroup);  
             
-        }
+            userGroup = null;
+            userGroup = services.createUsers9Template("d24","Zona-D-24Hr-Corrido");
+            userGroup.setTitle("Plan x Día");
+            userGroups.add(userGroup);  
+            
+       // }
         //Note: falta transformar el objeto de grupo de usuarios a json
         Gson gson = new Gson();
         String jsonTemplate = gson.toJson(userGroups);
