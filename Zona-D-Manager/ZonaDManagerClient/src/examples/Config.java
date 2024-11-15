@@ -11,6 +11,8 @@ public class Config {
     //public static final String HOST = "hff0952t7wy.sn.mynetname.net";
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "147896325";
-    public static final String JSON_REPORT_PATH ="C:\\Users\\o-mgu\\OneDrive\\Escritorio\\ZONA-D\\Reportes\\jsonRequest\\fichas.json";
+    //public static final String JSON_REPORT_PATH ="C:\\Users\\o-mgu\\OneDrive\\Escritorio\\ZONA-D\\Reportes\\jsonRequest\\fichas.json";
+    public static final String JSON_REPORT_PATH ="C:\\zona-d-fichas-generadas\\fichas.json";
+    
 
 }
