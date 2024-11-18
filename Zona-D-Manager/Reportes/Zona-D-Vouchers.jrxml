@@ -1,0 +1,421 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e886324e-a6ec-45eb-be7e-e6fef4b50597">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="zona-d-adapter"/>
+	<query language="json"><![CDATA[]]></query>
+	<field name="title" class="java.lang.String">
+		<description><![CDATA[title]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="title"/>
+	</field>
+	<field name="username1" class="java.lang.String">
+		<description><![CDATA[username1]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username1"/>
+	</field>
+	<field name="password1" class="java.lang.String">
+		<description><![CDATA[password1]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password1"/>
+	</field>
+	<field name="username2" class="java.lang.String">
+		<description><![CDATA[username2]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username2"/>
+	</field>
+	<field name="password2" class="java.lang.String">
+		<description><![CDATA[password2]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password2"/>
+	</field>
+	<field name="username3" class="java.lang.String">
+		<description><![CDATA[username3]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username3"/>
+	</field>
+	<field name="password3" class="java.lang.String">
+		<description><![CDATA[password3]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password3"/>
+	</field>
+	<field name="username4" class="java.lang.String">
+		<description><![CDATA[username4]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username4"/>
+	</field>
+	<field name="password4" class="java.lang.String">
+		<description><![CDATA[password4]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password4"/>
+	</field>
+	<field name="username5" class="java.lang.String">
+		<description><![CDATA[username5]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username5"/>
+	</field>
+	<field name="password5" class="java.lang.String">
+		<description><![CDATA[password5]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password5"/>
+	</field>
+	<field name="username6" class="java.lang.String">
+		<description><![CDATA[username6]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username6"/>
+	</field>
+	<field name="password6" class="java.lang.String">
+		<description><![CDATA[password6]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password6"/>
+	</field>
+	<field name="username7" class="java.lang.String">
+		<description><![CDATA[username7]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username7"/>
+	</field>
+	<field name="password7" class="java.lang.String">
+		<description><![CDATA[password7]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password7"/>
+	</field>
+	<field name="username8" class="java.lang.String">
+		<description><![CDATA[username8]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username8"/>
+	</field>
+	<field name="password8" class="java.lang.String">
+		<description><![CDATA[password8]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password8"/>
+	</field>
+	<field name="username9" class="java.lang.String">
+		<description><![CDATA[username9]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username9"/>
+	</field>
+	<field name="password9" class="java.lang.String">
+		<description><![CDATA[password9]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password9"/>
+	</field>
+	<field name="username10" class="java.lang.String">
+		<description><![CDATA[username10]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username10"/>
+	</field>
+	<field name="password10" class="java.lang.String">
+		<description><![CDATA[password10]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password10"/>
+	</field>
+	<field name="username11" class="java.lang.String">
+		<description><![CDATA[username11]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username11"/>
+	</field>
+	<field name="password11" class="java.lang.String">
+		<description><![CDATA[password11]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password11"/>
+	</field>
+	<field name="username12" class="java.lang.String">
+		<description><![CDATA[username12]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username12"/>
+	</field>
+	<field name="password12" class="java.lang.String">
+		<description><![CDATA[password12]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password12"/>
+	</field>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<element kind="image" uuid="1858fe01-0b69-4756-90c6-fbe4ce4f1bdd" x="3" y="3" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b0b7876e-67ab-40a4-8274-85b60c48da0a" x="3" y="45" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="57b379fd-d873-434a-b545-788f50b31220" x="10" y="152" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="a599f664-3e98-4196-8b9a-5d2ce5f813dc" x="58" y="152" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username1}]]></expression>
+			</element>
+			<element kind="textField" uuid="fd1beea6-d861-434c-8a73-dd134ec5cc62" x="58" y="168" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password1}]]></expression>
+			</element>
+			<element kind="staticText" uuid="b841d0da-f3bf-4dfd-9236-e4ff04f328c0" x="10" y="168" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="24d65a91-dbca-4be9-876f-45a9675ad216" x="3" y="62" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="88098be9-fd5a-42c1-b099-e7236cf2c12d" x="3" y="134" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="dcd19c28-23f8-47c9-b3eb-8039c0317780" x="146" y="3" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="d13c4aa2-cc11-4adc-a6c8-bf2752f5d1b6" x="146" y="45" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="2f582e7f-7ec4-4f4c-b471-77528aeda4e5" x="153" y="152" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="bdda5ad6-0760-4d49-9927-8f8268d96a78" x="201" y="152" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username2}]]></expression>
+			</element>
+			<element kind="textField" uuid="9f11228f-82ea-4bb6-a9ae-2abbcdb97224" x="201" y="168" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password2}]]></expression>
+			</element>
+			<element kind="staticText" uuid="2e5c2440-6679-4316-9828-8d7a4ffb175e" x="153" y="168" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="046f3f42-2710-4722-85b7-3c90e1273cf2" x="146" y="62" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="03d445ab-4820-41d8-9329-150eaac0e17d" x="146" y="134" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="d578c1ff-ec93-496e-ace2-3aec78648e7c" x="286" y="5" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="99ca4ed5-cf90-4e52-abbd-2d57bd233328" x="286" y="47" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="14718065-5517-4e8c-9af7-51c38dc36bc2" x="293" y="154" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="c0c6f092-042f-4ee9-992e-ca5c2f3b4538" x="341" y="154" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username3}]]></expression>
+			</element>
+			<element kind="textField" uuid="6fa168be-66b0-4a9a-9946-f5b22a8fdeeb" x="341" y="170" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password3}]]></expression>
+			</element>
+			<element kind="staticText" uuid="c0c6c63e-1e33-4f0f-9acd-7517ef3fbe85" x="293" y="170" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="aca151a1-eb76-4afe-9d29-d3ad017abf48" x="286" y="64" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="48f70642-b00c-4197-be96-5d30c7f2ddd6" x="286" y="136" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="7d701aef-7b19-46e4-8f0d-78b24acda698" x="426" y="5" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="bdcab500-a81e-4f58-a86f-832865bd4204" x="426" y="47" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="6824f387-2bc3-4233-b010-25c3db5be24a" x="433" y="154" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="bd0e5c31-3fcf-4f6c-9254-85712c396df6" x="481" y="154" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username4}]]></expression>
+			</element>
+			<element kind="textField" uuid="b062c072-9352-4b8a-a47a-88adfb2917cc" x="481" y="170" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password4}]]></expression>
+			</element>
+			<element kind="staticText" uuid="a27ff18c-a1c8-499a-94f4-a282e57061f0" x="433" y="170" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="cb7910c8-ec83-4187-b791-ad6aa33f640b" x="426" y="64" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="d9a5547f-0f74-4401-8e10-a8c960b9cf82" x="426" y="136" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="fcbbd1c0-189c-42a1-adc2-8e25f77c48fa" x="3" y="238" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="eb8a63d1-fbae-4576-a033-a4ab2b95118f" x="3" y="280" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="55a0e092-e224-48d8-b698-e1a4ce4b92e2" x="10" y="387" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="0106f8af-e11a-4566-bb32-5f419603e503" x="58" y="387" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username5}]]></expression>
+			</element>
+			<element kind="textField" uuid="ee6f7ea6-2aed-4842-a948-b3fe8afbe8ca" x="58" y="403" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password5}]]></expression>
+			</element>
+			<element kind="staticText" uuid="cf9f87a5-7ad3-45ac-95d1-f32c3fa94bd3" x="10" y="403" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="44a0bfca-3252-48e6-b9f0-693dc7b6f0d0" x="3" y="297" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="104661c1-bc3c-4ebd-9c18-a580754521ea" x="3" y="369" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="f9a57b35-f15d-4fcd-b413-79c2343fe5c1" x="146" y="238" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="db858b1b-35a4-4525-8b85-1303760c6760" x="146" y="280" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="3e6f5309-b152-4218-836b-983cc66fc445" x="153" y="387" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="7cc97966-592e-449f-85e6-f9b0322b33e3" x="201" y="387" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username6}]]></expression>
+			</element>
+			<element kind="textField" uuid="6e020f31-7713-434f-bae6-511680c4a211" x="201" y="403" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password6}]]></expression>
+			</element>
+			<element kind="staticText" uuid="28f14219-ad9c-4125-9ef2-89b5c8966bbf" x="153" y="403" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="87c54328-f765-461c-90eb-e7756f8d119d" x="146" y="297" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="bc2417f6-3a0a-46a3-8545-717a5073cf3a" x="146" y="369" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="f1986fd1-c1ab-473c-8c1a-dcb809256ab1" x="286" y="240" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="e7b07457-cec2-467b-9c11-05dc8f33b337" x="286" y="282" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="ac13051d-13b3-49e2-b7be-1f48851fb29b" x="293" y="389" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="a8ae7926-b842-4694-a2b4-b49870e38a76" x="341" y="389" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username7}]]></expression>
+			</element>
+			<element kind="textField" uuid="855706d9-cd62-4bb9-bb4f-dcd2ac1dbbb2" x="341" y="405" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password7}]]></expression>
+			</element>
+			<element kind="staticText" uuid="e8c2d634-a93f-459a-928f-c56771577b74" x="293" y="405" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="4b7744e6-bf4f-4523-a8e3-6e1e67907953" x="286" y="299" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="69c2cf77-624c-4396-a688-3a36be0c60ff" x="286" y="371" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="e73c9a6d-f8ee-43b9-9594-66dc15f7d080" x="426" y="240" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="dc85e8d6-3f06-4df9-ba76-618f57db635d" x="426" y="282" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="25358d88-263f-46e3-9fec-201168a13a9c" x="433" y="389" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="1ef0d794-c0ab-458f-8858-31d74cf01db6" x="481" y="389" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username8}]]></expression>
+			</element>
+			<element kind="textField" uuid="b76bf1e6-23da-44b0-8131-a6e8cba928d0" x="481" y="405" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password8}]]></expression>
+			</element>
+			<element kind="staticText" uuid="52008901-1296-4040-ade5-4662dc1547c3" x="433" y="405" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="4679f97d-d10c-42a0-81c5-7047862e71c8" x="426" y="299" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="15e733b0-dcd5-4a3e-a4a1-8d3e13fe7d6b" x="426" y="371" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="ecaaa9ce-3f27-415e-8359-6218d1bfd5e6" x="6" y="474" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c850db1b-3d28-4079-a42d-1dda67fee181" x="6" y="516" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="959cd2e4-817b-4d14-bc59-cf20075c2f59" x="13" y="625" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="ea94880d-542d-4418-9dd4-f6a966184190" x="61" y="625" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username9}]]></expression>
+			</element>
+			<element kind="textField" uuid="375b3e29-67d1-4d52-9a0f-30d2392e64f4" x="61" y="641" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password9}]]></expression>
+			</element>
+			<element kind="staticText" uuid="ba3bd8dc-4baa-4a62-85e0-b576dcb47727" x="13" y="641" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="5534f9a4-6ae1-46ec-bf50-08075691899e" x="6" y="533" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="d9735805-23d5-4c23-bce2-1159a81ece8b" x="6" y="607" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="f46773c1-c456-40e6-a9c2-0e29b78662b3" x="149" y="474" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="c45ceefd-de8a-4ad6-85c6-0dbdc7cf8f6e" x="149" y="516" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="a9762020-172d-4db1-a636-860dcc6eeb92" x="156" y="625" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="9dafb98f-d921-4747-89e9-49219fb65097" x="204" y="625" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username10}]]></expression>
+			</element>
+			<element kind="textField" uuid="fe0d6e39-9e78-4f6d-8d2e-513f70164de9" x="204" y="641" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password10}]]></expression>
+			</element>
+			<element kind="staticText" uuid="cb6ff832-a60f-4453-bce0-c75dc41d64f8" x="156" y="641" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="689644d0-962a-4b52-8d83-6627a459210b" x="149" y="533" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="79067aad-52ab-490c-ba85-13caf75f3536" x="149" y="607" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="4d7053f8-c440-4de8-9371-9188fb01a64c" x="289" y="476" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="7ad93cd6-4ad7-49b5-9004-c3c71505018f" x="289" y="518" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="6b57ac23-333f-4ab9-8e56-8b5c929cc037" x="296" y="627" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="67cc7331-4b4e-4f9d-8736-8debc3e925c0" x="344" y="627" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username11}]]></expression>
+			</element>
+			<element kind="textField" uuid="e509ad49-a010-4e64-9121-8bf79cb48c59" x="344" y="643" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password11}]]></expression>
+			</element>
+			<element kind="staticText" uuid="1593ac45-606d-4639-8447-378b719318b2" x="296" y="643" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="94a988ee-d1b0-4e03-8e71-71815ac2a6dd" x="289" y="535" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="b5841eac-51f3-4454-99b0-2060623c17b5" x="289" y="609" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+			<element kind="image" uuid="0eb6128b-bc0e-4c1d-8b7b-d854f5a106c9" x="429" y="476" width="130" height="215">
+				<expression><![CDATA["C:/Users/o-mgu/OneDrive/Escritorio/ZONA-D/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="495e3241-0b47-48e7-8b0c-d6b55d215b01" x="429" y="518" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="8e2ff8b4-5997-45ee-83b3-1f1ab465fd2d" x="436" y="627" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="c302e800-15c2-4cdf-a0fe-4577364280fb" x="484" y="627" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username12}]]></expression>
+			</element>
+			<element kind="textField" uuid="911f43ff-1bce-4d6b-ae77-0bcba2c620c6" x="484" y="643" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password12}]]></expression>
+			</element>
+			<element kind="staticText" uuid="fbeda5f2-cc09-4e34-bb90-1afe656b19e2" x="436" y="643" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="3fa23599-729f-479f-87c5-9bc1374402b6" x="429" y="535" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="715e4a04-1d8b-42ae-9170-0a8d0498a85b" x="429" y="609" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>
