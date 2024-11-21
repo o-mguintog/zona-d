@@ -1,0 +1,151 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Zona-D-Digital" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa96807c-3964-4b05-95fb-c18b5d0130e6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Zona-D-Digital"/>
+	<dataset name="Zona-D-Digital" uuid="b8a7f6e2-56e2-4846-b29b-6cd7792bcaa2">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Zona-D-Digital"/>
+		<query language="json"><![CDATA[]]></query>
+		<field name="title" class="java.lang.String">
+			<description><![CDATA[title]]></description>
+			<property name="net.sf.jasperreports.json.field.expression" value="title"/>
+		</field>
+		<field name="username1" class="java.lang.String">
+			<description><![CDATA[username1]]></description>
+			<property name="net.sf.jasperreports.json.field.expression" value="username1"/>
+		</field>
+		<field name="password1" class="java.lang.String">
+			<description><![CDATA[password1]]></description>
+			<property name="net.sf.jasperreports.json.field.expression" value="password1"/>
+		</field>
+	</dataset>
+	<query language="json"><![CDATA[]]></query>
+	<field name="title" class="java.lang.String">
+		<description><![CDATA[title]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="title"/>
+	</field>
+	<field name="username1" class="java.lang.String">
+		<description><![CDATA[username1]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username1"/>
+	</field>
+	<field name="password1" class="java.lang.String">
+		<description><![CDATA[password1]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password1"/>
+	</field>
+	<field name="username2" class="java.lang.String">
+		<description><![CDATA[username2]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username2"/>
+	</field>
+	<field name="password2" class="java.lang.String">
+		<description><![CDATA[password2]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password2"/>
+	</field>
+	<field name="username3" class="java.lang.String">
+		<description><![CDATA[username3]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username3"/>
+	</field>
+	<field name="password3" class="java.lang.String">
+		<description><![CDATA[password3]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password3"/>
+	</field>
+	<field name="username4" class="java.lang.String">
+		<description><![CDATA[username4]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username4"/>
+	</field>
+	<field name="password4" class="java.lang.String">
+		<description><![CDATA[password4]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password4"/>
+	</field>
+	<field name="username5" class="java.lang.String">
+		<description><![CDATA[username5]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username5"/>
+	</field>
+	<field name="password5" class="java.lang.String">
+		<description><![CDATA[password5]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password5"/>
+	</field>
+	<field name="username6" class="java.lang.String">
+		<description><![CDATA[username6]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username6"/>
+	</field>
+	<field name="password6" class="java.lang.String">
+		<description><![CDATA[password6]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password6"/>
+	</field>
+	<field name="username7" class="java.lang.String">
+		<description><![CDATA[username7]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username7"/>
+	</field>
+	<field name="password7" class="java.lang.String">
+		<description><![CDATA[password7]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password7"/>
+	</field>
+	<field name="username8" class="java.lang.String">
+		<description><![CDATA[username8]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username8"/>
+	</field>
+	<field name="password8" class="java.lang.String">
+		<description><![CDATA[password8]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password8"/>
+	</field>
+	<field name="username9" class="java.lang.String">
+		<description><![CDATA[username9]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username9"/>
+	</field>
+	<field name="password9" class="java.lang.String">
+		<description><![CDATA[password9]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password9"/>
+	</field>
+	<field name="username10" class="java.lang.String">
+		<description><![CDATA[username10]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username10"/>
+	</field>
+	<field name="password10" class="java.lang.String">
+		<description><![CDATA[password10]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password10"/>
+	</field>
+	<field name="username11" class="java.lang.String">
+		<description><![CDATA[username11]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username11"/>
+	</field>
+	<field name="password11" class="java.lang.String">
+		<description><![CDATA[password11]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password11"/>
+	</field>
+	<field name="username12" class="java.lang.String">
+		<description><![CDATA[username12]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="username12"/>
+	</field>
+	<field name="password12" class="java.lang.String">
+		<description><![CDATA[password12]]></description>
+		<property name="net.sf.jasperreports.json.field.expression" value="password12"/>
+	</field>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<element kind="image" uuid="b55fe544-f6f5-4adf-b5a4-fd9806889111" x="210" y="0" width="150" height="215">
+				<expression><![CDATA["C:/Users/Zona-D/Desktop/zona-d/Zona-D-Manager/Reportes/vaucher_v2.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="a710e664-a3f5-4b18-934f-923012a5cc9c" x="210" y="42" width="130" height="23" fontName="Anton" fontSize="15.0" bold="false" hTextAlign="Center">
+				<text><![CDATA[Paquete:]]></text>
+			</element>
+			<element kind="staticText" uuid="a5cc5bcc-2c94-4af4-9525-a0b10b6fddea" x="217" y="149" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Usuario:]]></text>
+			</element>
+			<element kind="textField" uuid="280dda86-4989-4589-988a-28f213c458d0" x="265" y="149" width="95" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{username1}]]></expression>
+			</element>
+			<element kind="textField" uuid="02c6a8c1-441a-4384-98b3-eb8294688f06" x="265" y="165" width="75" height="20" fontName="Anton" fontSize="13.0">
+				<expression><![CDATA[$F{password1}]]></expression>
+			</element>
+			<element kind="staticText" uuid="df12b2f6-406a-4bb7-a06b-556f0b51f62e" x="217" y="165" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
+				<text><![CDATA[Clave:]]></text>
+			</element>
+			<element kind="textField" uuid="33d25264-3912-4534-a156-076c3240d0c8" x="210" y="59" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="textField" uuid="9530912c-94d5-446b-b510-85b279c44184" x="210" y="131" width="130" height="20" forecolor="#FF0000" backcolor="#FFFFFF" fontName="Anton" fontSize="8.0" hTextAlign="Center">
+				<expression><![CDATA["O Ingresa a:     www.zona-d.com"]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

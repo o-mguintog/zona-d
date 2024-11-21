@@ -1,6 +1,6 @@
 <!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
 <jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e886324e-a6ec-45eb-be7e-e6fef4b50597">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="zona-d-adapter"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Json-Zona-D"/>
 	<dataset name="Dataset1" uuid="f0274c39-3b2b-47d3-8282-74e3ffcad99b">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Json-Zona-D"/>
 		<parameter name="JSON_INPUT_STREAM" forPrompting="false" class="java.io.InputStream"/>

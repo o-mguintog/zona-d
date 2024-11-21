@@ -292,9 +292,24 @@ public class ZonaDServices {
 
             //Crea el primer grupo de 12 usuarios por paquete
             UserType userGroup = null;
+            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido");
+            userGroup.setTitle("Plan 24 Hrs");
+            userGroups.add(userGroup);  
+                
+            userGroup = null;
             userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido");
             userGroup.setTitle("Plan Semanal");
-            userGroups.add(userGroup);  
+            userGroups.add(userGroup);
+            
+            userGroup = null;
+            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido");
+            userGroup.setTitle("Plan Quincenal");
+            userGroups.add(userGroup);
+            
+            userGroup = null;
+            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido");
+            userGroup.setTitle("Plan Mensual");
+            userGroups.add(userGroup);
             
        // }
         //Note: falta transformar el objeto de grupo de usuarios a json
