@@ -1,5 +1,7 @@
 body {
     background-color: #000;
+	
+	
 
 }
 .logo{
@@ -150,4 +152,30 @@ a:active{
 	width:350px;		
 	padding-top: 30%
 	
+}
+
+.container{
+height:100%;
+align-content: center;
+}
+
+td{
+
+	color: #FFF;
+}
+th{
+
+	color: #FFC312;
+}
+
+.card{
+height: auto;
+
+margin-bottom: auto;
+width: 350px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+color: white;
 }
