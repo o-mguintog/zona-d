@@ -1,0 +1,178 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="897754F6-39BB-D979-B24A-641C39F803A3" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_FICHAS">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>Zona-D</sourceObjSchema>
+<sourceObjName>USERS</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:39 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<ordsAlias>users</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NAME" id="B903DF9D-44B0-A776-4323-84C3750C5403">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>USERS</sourceObjSchema>
+<sourceObjName>NAME</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[Nombre de usuario de la ficha]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROFILE" id="F17D7011-78E8-EF5C-10FD-A5D18878E457">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:04:13 UTC</createdTime>
+<commentInRDBMS><![CDATA[Código de perfil]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F5570D6F-D77C-2816-DC07-166BE954456D" referredColumn="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2"/>
+</associations>
+</Column>
+<Column name="VENDOR_ID" id="59BBB151-C880-AD84-488D-FD98F239E6E4">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:12:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[Clave del vendedor]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="62C37DC8-62FD-0DA5-05E6-7E3914539B8E" referredColumn="B222FAE6-7166-D8E5-F80C-1B001CDEC779"/>
+</associations>
+</Column>
+<Column name="CREATION_DATE" id="DB4C9067-6E2B-B82B-DB5C-33B3F3870589">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>USERS</sourceObjSchema>
+<sourceObjName>CREATION_DATE</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:40 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BEGIN_DATE" id="E12B4B4A-A809-A242-811E-019CF005271F">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>USERS</sourceObjSchema>
+<sourceObjName>BEGIN_DATE</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[Fecha de inicio de utilización de la ficha]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="END_DATE" id="7F3FFFB9-698D-474F-8338-34D4E91E217F">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>USERS</sourceObjSchema>
+<sourceObjName>END_DATE</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[Fecha de fin de utilización de la ficha]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="5B33B108-9411-4538-1418-556E5FDBDE73">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>USERS</sourceObjSchema>
+<sourceObjName>STATUS</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[NEW
+ACTIVE
+FINISHED]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<constraintName>Status_FK</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="ACTIVE" description="Activa"/>
+<valueDef value="FINISHED" description="Terminada"/>
+<valueDef value="NEW" description="Nueva"/>
+</listOfValues>
+<defaultValue>NEW</defaultValue>
+<ownDataTypeParameters>15 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5C699EF5-10BF-5278-9957-7CE1D0CE8E49" name="USERS_PK">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>Zona-D</sourceObjSchema>
+<sourceObjName>USERS_PK</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:44 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B903DF9D-44B0-A776-4323-84C3750C5403"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CB6E302E-48DF-59E3-6B25-C16935ABA717" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="USERS_PK">
+<sourceConnName>Zona-D</sourceConnName>
+<sourceObjSchema>Zona-D</sourceObjSchema>
+<sourceObjName>USERS_PK</sourceObjName>
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:50:44 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B903DF9D-44B0-A776-4323-84C3750C5403"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5809D7EC-4C67-A2D0-13B5-5D453FEBDE72" name="ZD_USERS_ZD_PROFILES_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:04:13 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F17D7011-78E8-EF5C-10FD-A5D18878E457"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BB9BB1EB-CE59-FBCA-30CA-160C7FB5E39C" name="ZD_USERS_POINT_SALES_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:12:51 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59BBB151-C880-AD84-488D-FD98F239E6E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

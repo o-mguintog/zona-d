@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="Zona-D" directorySegmentName="seg_0" id="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:13:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<ordsAlias>schema_1</ordsAlias>
+</SchemaObject>

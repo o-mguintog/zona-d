@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="2F07B210-A5D6-9B50-0B4E-15A7F776313D">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:10:25 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

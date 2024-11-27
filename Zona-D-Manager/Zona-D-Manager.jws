@@ -10,6 +10,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="ModelZonaD/ModelZonaD.jpr"/></hash>
       <hash><url n="URL" path="ZonaDManagerClient/ZonaDManagerClient.jpr"/></hash>
    </list>
 </jws:workspace>

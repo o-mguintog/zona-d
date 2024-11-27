@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Zona-D-Model" id="28F6D8E5-8FD5-0067-F961-EE7D55A0F598" mainViewID="0FCFB1C9-901E-6153-1ECB-6BC35926C20E">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:11:05 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>79C73AAF-E1A7-E669-7DF0-025EE81A2AFC</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>Zona-D</connName>
+<connUser>&quot;Zona-D&quot;</connUser>
+<connType>1</connType>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2888B913-9AE9-FF8A-A45C-4D0ABCBC77E0" containerWithKeyObject="317C6D13-DB97-A56C-32C3-51160A23A8F1" localFKIndex="660C8030-69DB-7BE5-D2E5-E7457C257112" name="ZD_CONTACTS_ZD_POINT_SALES_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:20:21 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<referredTableLongName>Zona-D.ZD_POINT_SALES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1F047135-F25C-F85C-A200-7C048EA3C67E</referredTableID>
+<keyObject>F4562680-F808-67CB-762B-5B71FB74E279</keyObject>
+<referredKeyID>F4562680-F808-67CB-762B-5B71FB74E279</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CODE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

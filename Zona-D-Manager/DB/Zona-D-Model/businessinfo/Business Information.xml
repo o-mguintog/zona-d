@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="1D16CBE0-DB93-F67A-51D9-8433828292BD">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:10:25 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

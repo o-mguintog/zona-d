@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1F047135-F25C-F85C-A200-7C048EA3C67E" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_VENDOR">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:06:17 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VENDOR_ID" id="B222FAE6-7166-D8E5-F80C-1B001CDEC779">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:07:28 UTC</createdTime>
+<commentInRDBMS><![CDATA[Clave de punto de venta]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VENDOR_NAME" id="80EBA2D9-0420-C867-A886-6E26DDF7218C">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:11:59 UTC</createdTime>
+<commentInRDBMS><![CDATA[Nombre del vendedor]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOCATION" id="64D742FA-1DAC-D1BC-086C-9824E8F92424">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:11:59 UTC</createdTime>
+<commentInRDBMS><![CDATA[Localización del punto de venta]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 CHAR</dataTypeSize>
+<ownDataTypeParameters>500 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="516634FB-2BED-211A-D4F8-E089D6D40759">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:11:59 UTC</createdTime>
+<commentInRDBMS><![CDATA[Active, Inactive]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<constraintName>Status_vendor</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Active" description="Activo"/>
+<valueDef value="Inactive" description="Inactivo"/>
+</listOfValues>
+<defaultValue>Active</defaultValue>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F4562680-F808-67CB-762B-5B71FB74E279" name="POINT_SALES_PK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:07:28 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B222FAE6-7166-D8E5-F80C-1B001CDEC779"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,181 @@
+body {
+    background-color: #000;
+	
+	
+
+}
+.logo{
+	position: relative;
+	top:0px; 
+	left:0px;
+	width:220px;
+	height:120px;
+}
+.login{
+
+position: relative;
+top:0px; left:-0px;
+font-family:arial;padding:50px 0 0 0}.login 
+
+display:block;border-radius: 0px;margin:0 auto 0px
+}
+.login a,.login a:visited{text-decoration:underline;color:inherit}ul.notice{margin:30px auto;width:300px;text-align:center;list-style-position:inside;font-size:15px;padding:20px 30px;border-radius:3px}ul.notice.errors{background-color:#fff4f4;border:1px solid #262624;color:#f50909}ul.notice.success{background-color:#d7eacd;border:1px solid #6fae4f;color:#6fae4f}ul.notice li{padding:5px 0}.vertical-form{margin:0 auto}.vertical-form legend{width:100%;font-size:24px;font-weight:500;text-align:center;margin:0 0 0px 0}
+.text
+{border-radius:6px 6px 0px 0px;-webkit-appearance:none;
+}
+.password
+{border-radius:0px 0px 6px 6px;-webkit-appearance:none;
+}
+.vertical-form input[type='text'],.vertical-form input[type='password'],.vertical-form input[type='number']{border:1px #171717 solid;color:#fff;background:#2e2e2e;opacity: 1;
+    filter: alpha(opacity=95);
+height:50px !important;font-size:18px}.vertical-form input[type='text'],.vertical-form input[type='password'],.vertical-form input[type='submit'],.vertical-form input[type='number']{display:block;margin:0 auto 0px auto;width:250px;text-align:left;color:#fff;padding-left: 5px; outline:none;font-family:inherit}.vertical-form input[type='submit']{-webkit-appearance:none;margin-top: 10px;color:#fff;background:#171717;background-image:url(next.png);
+	background-repeat: no-repeat; background-position:center;opacity: 0.9;
+    filter: alpha(opacity=0.4);border:2px #2e2e2e solid;border-radius: 6px; height:50px !important;width:250px;font-size:16px;color:#fff;font-weight:400;outline:0;letter-spacing:1.5px;cursor:pointer}.vertical-form input:hover[type='submit']{background-color:#e50b10;-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-o-transition:all 0.3s ease;transition:all 0.3s ease}.vertical-form .footer{text-align:center;color:#666;position: relative;
+top:-0px; left:0px;}.vertical-form .footer p:first-child{color:#ccc}.vertical-form .footer a:first-child{color:#00A9E0}.vertical-form .footer p:nth-child(2) a{border-bottom:solid 1px #000} @media (max-width:0px){.login{padding:10px 0 0 0}}
+
+.propaganda{
+
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  
+  margin: auto;
+  width: 640px; 
+  padding: 50px;
+  font-family: 'Avenir', sans-serif; 
+  color: #33475b; 
+}
+
+.logo-propaganda{
+
+	width:255px;
+
+	text-align: center;
+	color:#FFFFFF;
+}
+
+.logo-propaganda-face{
+
+	width: 50px;
+	height: 50px;
+
+	text-align: center;
+	color:#FFFFFF;
+	
+}
+
+.paquetes-propaganda{
+
+	width:255px;
+
+	text-align: justify;
+	color:#FFFFFF;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 10px;
+  padding: 10px;
+}
+
+.flex-item-left {
+  flex: 50%;
+}
+
+.flex-item-right {
+  flex: 50%;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-item-right, .flex-item-left {
+    flex: 100%;
+  }
+}
+
+.botonAdquirirFicha{
+	-webkit-appearance:none;
+	margin-top: 10px;
+	color:#fff;background:#171717;
+	
+	background-repeat: no-repeat; 
+	background-position:center;
+	opacity: 0.9;
+    filter: alpha(opacity=0.4);
+	border:2px #2e2e2e solid;
+	border-radius: 6px; 
+	height:50px !important;
+	width:250px;
+	font-size:16px;
+	color:#fff;
+	font-weight:400;
+	outline:0;
+	letter-spacing:1.5px;
+	cursor:pointer
+}
+
+.botonAdquirirFicha:hover{
+	background-color:#e50b10;
+	-webkit-transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+	transition:all 0.3s ease
+}
+
+.center{
+	text-align: center;
+}
+
+.Left{
+	text-align: left;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover{
+  color: red;
+}
+
+a:active{
+  color: blue;
+}
+
+.logo-welcome{
+
+	width:350px;		
+	padding-top: 30%
+	
+}
+
+.container{
+height:100%;
+align-content: center;
+}
+
+td{
+
+	color: #FFF;
+}
+th{
+
+	color: #FFC312;
+}
+
+.card{
+height: auto;
+
+margin-bottom: auto;
+width: 350px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+color: white;
+}

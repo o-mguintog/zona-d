@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="19645F53-6B44-2DE8-FAAC-D01B586D0541" mainViewID="64EA467D-ADFC-BAD0-3CC5-8FEFDB939616">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:10:25 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

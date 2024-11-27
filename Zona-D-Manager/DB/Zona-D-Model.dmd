@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Zona-D-Model" id="476CD0EA-51F5-5A22-B93F-0D48377B8ECB" version="3.5">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-24 21:10:25 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>476CD0EA-51F5-5A22-B93F-0D48377B8ECB</designId>
+</OSDM_Design>

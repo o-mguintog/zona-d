@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8A616920-77DF-C461-5900-1E9DCBE70C9E" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_PROFILES">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 04:57:15 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CODE_PROFILE" id="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:02:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[Código del perfil]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROFILE_NAME" id="BC4DBCE0-0F74-CEB8-37FE-81242C3FF87F">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:02:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[Nombre del perfil]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROFILE_TIME" id="BE874FB9-0CB3-8797-C780-F65081D042D3">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:02:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[Tiempo por perfil, Ejemplo:
+
+1d 00:00:00]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="CDCC040B-BE40-E1EC-8B7F-53487D48B85B">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:02:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[Status del perfil
+
+Active
+Inactive]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<constraintName>Status_profile_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Active" description="Activo"/>
+<valueDef value="Inactive" description="Inactivo"/>
+</listOfValues>
+<defaultValue>Active</defaultValue>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F1E91F7E-E604-D5A3-646B-B17FDD527ECF" name="ZD_PROFILES_PK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:02:51 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

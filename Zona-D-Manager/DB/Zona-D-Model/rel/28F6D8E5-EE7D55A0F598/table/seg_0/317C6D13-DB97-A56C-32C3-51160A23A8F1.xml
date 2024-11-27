@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="317C6D13-DB97-A56C-32C3-51160A23A8F1" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_CONTACTS">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:13:44 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CONTACT_ID" id="80F163C4-22D0-C3A4-6F48-D7AEFFFC973C">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:18:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[Clave del tipo de contacto]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VENDOR_ID" id="138D5CDC-C46D-8435-9C02-502E24E05DD4">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:20:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[clave  del vendedor]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2888B913-9AE9-FF8A-A45C-4D0ABCBC77E0" referredColumn="B222FAE6-7166-D8E5-F80C-1B001CDEC779"/>
+</associations>
+</Column>
+<Column name="CONTACT_TYPE" id="A771FA26-6F48-73D3-4184-8DD02637063B">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:18:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[Tipo de contacto
+Facebok
+WA
+Fisico]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIPTION" id="868F5B6D-4B88-76C8-E0C0-472DB7EB4B59">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:18:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[Descripción del tipo de contacto. Teléfono,  face, otro]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="497D00F5-F043-0209-E342-201870726DDB">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:18:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[Active. Inactive]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<constraintName>status_contact_ck</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Active" description="Activo"/>
+<valueDef value="Inactive" description="Inactivo"/>
+</listOfValues>
+<defaultValue>Active</defaultValue>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C2C97EFE-AFBF-3CB0-8358-1F827ABD8202" name="ZD_CONTACTS_PK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:18:55 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="80F163C4-22D0-C3A4-6F48-D7AEFFFC973C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="660C8030-69DB-7BE5-D2E5-E7457C257112" name="ZD_CONTACTS_ZD_POINT_SALES_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:20:21 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="138D5CDC-C46D-8435-9C02-502E24E05DD4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

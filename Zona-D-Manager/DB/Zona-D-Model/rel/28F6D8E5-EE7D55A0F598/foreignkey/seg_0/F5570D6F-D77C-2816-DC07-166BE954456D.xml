@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F5570D6F-D77C-2816-DC07-166BE954456D" containerWithKeyObject="897754F6-39BB-D979-B24A-641C39F803A3" localFKIndex="5809D7EC-4C67-A2D0-13B5-5D453FEBDE72" name="ZD_USERS_ZD_PROFILES_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-11-25 05:04:13 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<referredTableLongName>Zona-D.ZD_PROFILES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8A616920-77DF-C461-5900-1E9DCBE70C9E</referredTableID>
+<keyObject>F1E91F7E-E604-D5A3-646B-B17FDD527ECF</keyObject>
+<referredKeyID>F1E91F7E-E604-D5A3-646B-B17FDD527ECF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CODE_PROFILE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
