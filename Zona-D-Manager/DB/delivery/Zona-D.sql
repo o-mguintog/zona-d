@@ -16,6 +16,27 @@ TEMPORARY TABLESPACE "TEMP"
 ACCOUNT UNLOCK ;
 
 
+-- Generado por Oracle SQL Developer Data Modeler 23.1.0.087.0806
+--   en:        2024-11-28 20:01:47 CST
+--   sitio:      Oracle Database 12cR2
+--   tipo:      Oracle Database 12cR2
+
+
+
+-- predefined type, no DDL - MDSYS.SDO_GEOMETRY
+
+-- predefined type, no DDL - XMLTYPE
+
+create or replace NONEDITIONABLE PACKAGE "Zona-D".ZONA_D_PROCESS_PKG AS 
+    
+    /**
+     * Procesa las fichas nuevas 
+    **/
+    procedure ACTIVE_NEW_FICHAS_PS(PIC_FICHAS VARCHAR2);
+
+END ZONA_D_PROCESS_PKG;
+/
+
 CREATE SEQUENCE "Zona-D".contact_seq START WITH 1 INCREMENT BY 1 MAXVALUE 999999999999 MINVALUE 1;
 
 CREATE TABLE "Zona-D".zd_contacts (
@@ -97,7 +118,7 @@ ALTER TABLE "Zona-D".zd_fichas
 CREATE TABLE "Zona-D".zd_profiles (
     code_profile VARCHAR2(50 CHAR) NOT NULL,
     profile_name VARCHAR2(100 CHAR),
-    profile_time Number,
+    profile_time NUMBER,
     status       VARCHAR2(10 CHAR) DEFAULT 'Active'
 )
 LOGGING;
@@ -173,12 +194,86 @@ SELECT CONTACT_SEQ.NEXTVAL
   INTO   :NEW.CONTACT_ID
   FROM   DUAL;
 END; 
+/
 
+CREATE OR REPLACE NONEDITIONABLE PACKAGE BODY "Zona-D".zona_d_process_pkg AS
+
+    FUNCTION get_ficha_end_date (
+        pic_ficha VARCHAR2
+    ) RETURN DATE AS
+        l_end_date DATE;
+    BEGIN
+        BEGIN
+            SELECT
+                sysdate + profiles.profile_time end_date
+            INTO l_end_date
+            FROM
+                zd_fichas   fichas,
+                zd_profiles profiles
+            WHERE
+                    1 = 1
+                AND fichas.name = pic_ficha
+                AND profiles.code_profile = fichas.profile;
+
+        EXCEPTION
+            WHEN no_data_found THEN
+                l_end_date := NULL;
+                dbms_output.put_line('error');
+            WHEN OTHERS THEN
+                dbms_output.put_line('error');
+        END;
+
+        RETURN l_end_date;
+    END;
+
+    PROCEDURE active_new_fichas_ps (
+        pic_fichas VARCHAR2
+    ) AS
+
+        PRAGMA autonomous_transaction;
+        CURSOR cur_fichas_new_cur IS
+        SELECT
+            ficha,
+            status
+        FROM
+            JSON_TABLE ( pic_fichas, '$.responseFichas[*]'
+                COLUMNS (
+                    ficha VARCHAR2 ( 100 ) PATH '$.ficha',
+                    status VARCHAR2 ( 100 ) PATH '$.status'
+                )
+            )
+        WHERE
+            status = 'ACTIVE';
+
+        l_end_date DATE;
+    BEGIN
+        FOR cur_fichas_new_rec IN cur_fichas_new_cur LOOP
+    
+        --Obtiene la fecha fin
+
+            l_end_date := get_ficha_end_date(cur_fichas_new_rec.ficha);        
+        
+        --Actualiza la activación
+            UPDATE zd_fichas fichasold
+            SET
+                fichasold.status = cur_fichas_new_rec.status,
+                fichasold.begin_date = sysdate,
+                fichasold.end_date = l_end_date
+            WHERE
+                    1 = 1
+                AND fichasold.name = cur_fichas_new_rec.ficha;
+
+        END LOOP;
+
+        COMMIT;
+    END active_new_fichas_ps;
+
+END zona_d_process_pkg;
 /
 
 BEGIN
     DBMS_SCHEDULER.CREATE_JOB (
-            job_name => '"Zona-D".""',
+            job_name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"',
             job_type => 'EXECUTABLE',
             job_action => 'C:\\zona-d-schedulers\\zona-d-disable-users.bat',
             number_of_arguments => 0,
@@ -193,19 +288,20 @@ BEGIN
      
  
     DBMS_SCHEDULER.SET_ATTRIBUTE( 
-             name => '"Zona-D".""', 
+             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"', 
              attribute => 'store_output', value => TRUE);
     DBMS_SCHEDULER.SET_ATTRIBUTE( 
-             name => '"Zona-D".""', 
+             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"', 
              attribute => 'logging_level', value => DBMS_SCHEDULER.LOGGING_OFF);
       
    
   
     
     DBMS_SCHEDULER.enable(
-             name => '"Zona-D".""');
+             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"');
 END;
 /
+
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
@@ -214,8 +310,8 @@ END;
 -- ALTER TABLE                             11
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
+-- CREATE PACKAGE                           1
+-- CREATE PACKAGE BODY                      1
 -- CREATE PROCEDURE                         0
 -- CREATE FUNCTION                          0
 -- CREATE TRIGGER                           1
