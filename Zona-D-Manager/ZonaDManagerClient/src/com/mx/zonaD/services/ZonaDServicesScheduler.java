@@ -14,4 +14,9 @@ public class ZonaDServicesScheduler {
     public ZonaDServicesScheduler() {
         super();
     }
+    
+    public static void main(String[] args) {
+        ZonaDServices services = new ZonaDServices();
+        services.activeFichas();        
+   }
 }

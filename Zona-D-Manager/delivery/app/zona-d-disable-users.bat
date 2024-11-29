@@ -1,0 +1,1 @@
+java -jar C:\\zona-d-schedulers\\Zona-D-Scheduler-Active-Fichas-v2.jar

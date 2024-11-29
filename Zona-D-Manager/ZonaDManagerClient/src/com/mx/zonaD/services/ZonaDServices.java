@@ -1,6 +1,7 @@
 package com.mx.zonaD.services;
 
 import com.mx.zonaD.services.utils.ZonaDServicesUtils;
+import com.mx.zonaD.model.types.FichasType;
 import com.mx.zonaD.types.UserType;
 
 import examples.AnonymousSocketFactory;
@@ -14,7 +15,13 @@ import java.util.Map;
 import java.util.UUID;
 import com.google.gson.Gson;
 
+import com.mx.zonaD.model.operations.ZonaDDB;
+import com.mx.zonaD.model.services.ZonaDModelService;
+import com.mx.zonaD.model.services.response.FichasResponse;
+
 import me.legrange.mikrotik.*;
+
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ENABLED_USERS;
 
 /**
  * La clase <code>ZonaDServices</code> es utilizada para gestionar usuarios de mikrotik.
@@ -274,6 +281,102 @@ public class ZonaDServices {
     }
 
     /**
+     * Activa las nuevas fichas.
+     */
+    public void activeFichas(){
+        
+        try {
+            //Genera la conexión a mikrotik
+            connect();
+            
+            //Verifica la conexión a mikrotik
+            if (mkConnection != null){                        
+                
+                try {              
+                    //Obtiene los usuarios activos                                        
+                    List<Map<String, String>>mktUsers = mkConnection.execute(GET_ENABLED_USERS);
+                    
+                    FichasResponse fichasBD=null;
+                    fichasBD = ZonaDModelService.getFichasNew();                    
+                    String newFichas = getNewFichasActived(mktUsers,fichasBD);
+                    
+                    //Verifica que existan fichas a procesar
+                    if(newFichas != null){
+                        ZonaDDB.processNewFichas(newFichas);                        
+                    }
+                    
+                } catch (MikrotikApiException e) {
+                    //Imprime el error
+                    e.printStackTrace();
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            
+            try {
+                //Se desconecta del mikrotik
+                disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Verifica si las fichas est&aacute;n activas.
+     * 
+     * @param mktUsers Usuarios mikrotik
+     * @param fichasBD Fichas nuevas de la BD.
+     */
+    public String getNewFichasActived(List<Map<String, String>>mktUsers, FichasResponse fichasBD){
+        
+        final String NAME="name";
+        final String ACTIVE ="ACTIVE";
+        
+        boolean isChanged = false;
+        List<FichasType> fichaBDList =null;
+        String jsonUsers =null;
+        
+        //Verifica si hay fichas a evaluar
+        if (fichasBD == null){
+            System.out.println("No hay fichas nuevas");
+            return null;
+        }
+        
+        if(mktUsers != null && !mktUsers.isEmpty()){
+                        
+            fichaBDList = fichasBD.getResponseFichas();
+            
+            //Itera sobre los usuarios de BD.
+            for (FichasType fichaBD: fichaBDList){
+                
+                //Itera sobre los usuarios mikrotik
+                for( Map<String, String> currentUser : mktUsers){
+                    
+                    //Busca la ficha nueva de BD en la lista de fichas iniciadas Mikrotik
+                    if(currentUser.get(NAME).equals(fichaBD.getFicha())){
+                        System.out.println("Ficha "+currentUser.get(NAME)+" ya iniciada");    
+                        fichaBD.setStatus(ACTIVE);
+                        isChanged = true;
+                        break;
+                    }                    
+                }                
+            }                        
+        }
+        
+        //Verifica si hubo cambios
+        if(isChanged){
+            //Convert List to JSON
+            Gson gson = new Gson();
+            jsonUsers = gson.toJson(fichasBD);    
+        }
+        
+        return jsonUsers;        
+    }
+
+    /**
      * Cliente para ejecutar la funcionalidad de administraci&oacute;n de vouchers.
      * @param args Argumentos.
      */
@@ -323,6 +426,8 @@ public class ZonaDServices {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        
 
     }
 

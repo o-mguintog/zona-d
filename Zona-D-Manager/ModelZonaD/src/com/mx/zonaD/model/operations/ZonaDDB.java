@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 
 import com.mx.zonaD.model.services.response.FichasResponse;
 
+import java.sql.CallableStatement;
+
 /**
  * La clase <code>ZonaDDB</code> hace la conexi&oacute;n a la BD de Zona D.
  *
@@ -124,9 +126,54 @@ public class ZonaDDB {
         
         return response;
     }
+
+    /**
+     * Procesa las nuevas fichas.
+     * @param fichasNew Fichas nuevas.
+     */
+    public static void processNewFichas(String fichasNew){
+        
+        //Obtiene la conexión a la BD-
+        Connection connection =null;
+        CallableStatement cs =null;
+        connection = getConnection();                
+        
+        //Verifica la conexión a BD
+        if (connection != null){
+            
+            try {
+                cs = connection.prepareCall("{call ZONA_D_PROCESS_PKG.ACTIVE_NEW_FICHAS_PS(?)}");
+                cs.setString(1, fichasNew);                
+                cs.executeQuery();
+                //connection.commit();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally{
+                try {
+                    //Cierra el resultado
+                    if (cs != null && !cs.isClosed()){
+                        cs.close();    
+                    }
+                                  
+                    //Cierra la conexión
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    
+                    //Nulifica los recursos                    
+                    connection = null;
+                    
+                    e.printStackTrace();
+                }
+            }
+        
+        }
+    }
     
     public static void main(String[] args) {
         
-       ZonaDDB.getFichasNew();
+       
    }
 }

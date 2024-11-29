@@ -24,6 +24,55 @@
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <value n="webIANAEncoding" v="windows-1252"/>
    </hash>
+   <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
+      <hash n="profileDefinitions">
+         <hash n="Zona-D-Scheduler-Active-Fichas-v2">
+            <hash n="archiveOptions">
+               <list n="additionalManifests">
+                  <url path="deploy/gson-2.3.1.jar"/>
+                  <url path="deploy/ojdbc8-23.4.0.24.05.jar"/>
+                  <url path="deploy/MANIFEST.MF"/>
+               </list>
+               <value n="hasManifest" v="true"/>
+               <value n="mainClass" v="com.mx.zonaD.services.ZonaDServicesScheduler"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="6"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/Zona-D-Scheduler-Active-Fichas-v2.jar"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
+            <value n="profileName" v="Zona-D-Scheduler-Active-Fichas-v2"/>
+         </hash>
+      </hash>
+      <list n="profileList">
+         <string v="Zona-D-Scheduler-Active-Fichas-v2"/>
+      </list>
+   </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <value n="goalProfile" v="Default"/>
       <url n="pomfileURL" path="pom.xml"/>
