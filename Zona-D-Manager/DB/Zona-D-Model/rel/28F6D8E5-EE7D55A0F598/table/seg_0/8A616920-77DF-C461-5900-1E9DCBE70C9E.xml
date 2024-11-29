@@ -38,14 +38,13 @@
 <createdTime>2024-11-25 05:02:51 UTC</createdTime>
 <commentInRDBMS><![CDATA[Tiempo por perfil, Ejemplo:
 
-1d 00:00:00]]></commentInRDBMS>
+Número de días]]></commentInRDBMS>
 <ownerDesignName>Zona-D-Model</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30 CHAR</dataTypeSize>
-<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="STATUS" id="CDCC040B-BE40-E1EC-8B7F-53487D48B85B">

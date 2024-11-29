@@ -97,7 +97,7 @@ ALTER TABLE "Zona-D".zd_fichas
 CREATE TABLE "Zona-D".zd_profiles (
     code_profile VARCHAR2(50 CHAR) NOT NULL,
     profile_name VARCHAR2(100 CHAR),
-    profile_time VARCHAR2(30 CHAR),
+    profile_time Number,
     status       VARCHAR2(10 CHAR) DEFAULT 'Active'
 )
 LOGGING;
@@ -114,7 +114,7 @@ COMMENT ON COLUMN "Zona-D".zd_profiles.profile_name IS
 COMMENT ON COLUMN "Zona-D".zd_profiles.profile_time IS
     'Tiempo por perfil, Ejemplo:
 
-1d 00:00:00';
+Número de días';
 
 COMMENT ON COLUMN "Zona-D".zd_profiles.status IS
     'Status del perfil
@@ -173,9 +173,39 @@ SELECT CONTACT_SEQ.NEXTVAL
   INTO   :NEW.CONTACT_ID
   FROM   DUAL;
 END; 
+
 /
 
+BEGIN
+    DBMS_SCHEDULER.CREATE_JOB (
+            job_name => '"Zona-D".""',
+            job_type => 'EXECUTABLE',
+            job_action => 'C:\\zona-d-schedulers\\zona-d-disable-users.bat',
+            number_of_arguments => 0,
+            start_date => TO_TIMESTAMP_TZ('2024-11-28 16:50:26.000000000 AMERICA/MEXICO_CITY','YYYY-MM-DD HH24:MI:SS.FF TZR'),
+            repeat_interval => 'FREQ=HOURLY;BYDAY=MON,TUE,WED,THU,FRI,SAT,SUN',
+            end_date => NULL,
+            enabled => FALSE,
+            auto_drop => FALSE,
+            comments => '');
 
+         
+     
+ 
+    DBMS_SCHEDULER.SET_ATTRIBUTE( 
+             name => '"Zona-D".""', 
+             attribute => 'store_output', value => TRUE);
+    DBMS_SCHEDULER.SET_ATTRIBUTE( 
+             name => '"Zona-D".""', 
+             attribute => 'logging_level', value => DBMS_SCHEDULER.LOGGING_OFF);
+      
+   
+  
+    
+    DBMS_SCHEDULER.enable(
+             name => '"Zona-D".""');
+END;
+/
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
