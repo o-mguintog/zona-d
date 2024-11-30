@@ -23,18 +23,6 @@ ACCOUNT UNLOCK ;
 
 
 
--- predefined type, no DDL - MDSYS.SDO_GEOMETRY
-
--- predefined type, no DDL - XMLTYPE
-
-create or replace NONEDITIONABLE PACKAGE "Zona-D".ZONA_D_PROCESS_PKG AS 
-    
-    /**
-     * Procesa las fichas nuevas 
-    **/
-    procedure ACTIVE_NEW_FICHAS_PS(PIC_FICHAS VARCHAR2);
-
-END ZONA_D_PROCESS_PKG;
 /
 
 CREATE SEQUENCE "Zona-D".contact_seq START WITH 1 INCREMENT BY 1 MAXVALUE 999999999999 MINVALUE 1;
@@ -196,89 +184,226 @@ SELECT CONTACT_SEQ.NEXTVAL
 END; 
 /
 
-CREATE OR REPLACE NONEDITIONABLE PACKAGE BODY "Zona-D".zona_d_process_pkg AS
+create or replace NONEDITIONABLE PACKAGE ZONA_D_PROCESS_PKG AS 
+    
+    /**
+     * Procesa las fichas nuevas 
+    **/
+    PROCEDURE ACTIVE_NEW_FICHAS_PS(PIC_FICHAS VARCHAR2);
+    
+    PROCEDURE DISABLED_FICHAS_PS(PIC_FICHAS VARCHAR2);
+    
+    PROCEDURE REGISTER_FICHAS_PS(PIC_FICHAS VARCHAR2);
 
-    FUNCTION get_ficha_end_date (
-        pic_ficha VARCHAR2
-    ) RETURN DATE AS
-        l_end_date DATE;
+END ZONA_D_PROCESS_PKG;
+/
+create or replace NONEDITIONABLE PACKAGE BODY ZONA_D_PROCESS_PKG AS
+    
+    
+    
+    FUNCTION GET_FICHA_END_DATE(PIC_FICHA VARCHAR2)RETURN DATE 
+    AS
+        L_END_DATE DATE;
     BEGIN
+        
         BEGIN
-            SELECT
-                sysdate + profiles.profile_time end_date
-            INTO l_end_date
-            FROM
-                zd_fichas   fichas,
-                zd_profiles profiles
-            WHERE
-                    1 = 1
-                AND fichas.name = pic_ficha
-                AND profiles.code_profile = fichas.profile;
-
-        EXCEPTION
-            WHEN no_data_found THEN
-                l_end_date := NULL;
+            SELECT SYSDATE + Profiles.PROFILE_TIME END_DATE
+            INTO L_END_DATE
+            FROM ZD_FICHAS Fichas,
+                 ZD_PROFILES Profiles
+            WHERE 1 = 1
+              AND Fichas.NAME  = PIC_FICHA
+              AND Profiles.CODE_PROFILE = Fichas.PROFILE;
+        EXCEPTION 
+            WHEN NO_DATA_FOUND THEN
+                L_END_DATE := NULL;
                 dbms_output.put_line('error');
-            WHEN OTHERS THEN
+            WHEN OTHERS THEN 
                 dbms_output.put_line('error');
         END;
+        
+    
+    RETURN L_END_DATE;
+    
+    END;
+    
+    PROCEDURE ACTIVE_NEW_FICHAS_PS(PIC_FICHAS VARCHAR2) AS
+        PRAGMA AUTONOMOUS_TRANSACTION;
+    
+        cursor cur_fichas_new_cur is
+            select Ficha,
+                      Status
+                from json_table(PIC_FICHAS,'$.responseFichas[*]'
+                                columns (ficha varchar2(100) path '$.ficha' ,
+                                         status varchar2(100) path '$.status' ))
+            WHERE Status ='ACTIVE';
+                                         
+            L_END_DATE DATE;
+    BEGIN
+     
+        FOR cur_fichas_new_rec IN cur_fichas_new_cur
+        LOOP
+        
+            --Obtiene la fecha fin
+            
+            L_END_DATE := GET_FICHA_END_DATE(cur_fichas_new_rec.Ficha);        
+            
+            --Actualiza la activación
+            UPDATE ZD_FICHAS FichasOld
+                SET FichasOld.STATUS = cur_fichas_new_rec.status,
+                    FichasOld.begin_date = sysdate,
+                    FichasOld.end_date = L_END_DATE
+            WHERE 1 = 1
+              AND FichasOld.NAME = cur_fichas_new_rec.FICHA;
+        
+        END LOOP;
+        
+        COMMIT;
+    
+    END ACTIVE_NEW_FICHAS_PS;
+    
+    
+    PROCEDURE DISABLED_FICHAS_PS(PIC_FICHAS VARCHAR2) AS
+        PRAGMA AUTONOMOUS_TRANSACTION;
+    
+    cursor cur_fichas_new_cur is
+        select Ficha,
+                  Status
+            from json_table(PIC_FICHAS,'$.responseFichas[*]'
+                            columns (ficha varchar2(100) path '$.ficha' ,
+                                     status varchar2(100) path '$.status' ))
+        WHERE Status ='FINISHED';
+                                     
+    BEGIN
+     
+        FOR cur_fichas_new_rec IN cur_fichas_new_cur
+        LOOP
+            
+            --Actualiza la activación
+            UPDATE ZD_FICHAS FichasOld
+                SET FichasOld.STATUS = cur_fichas_new_rec.status                
+            WHERE 1 = 1
+              AND FichasOld.NAME = cur_fichas_new_rec.FICHA;
+        
+        END LOOP;
+        
+        COMMIT;
+    
+    END;
+    
+    PROCEDURE REGISTER_FICHAS_PS(PIC_FICHAS VARCHAR2)AS
+    
+        PRAGMA AUTONOMOUS_TRANSACTION;
+    
+        CURSOR NEW_FICHAS_CUR IS
+            select title,
+                   profile,
+                   vendor,
+                   username1,
+                   username2,
+                   username3,
+                   username4,
+                   username5,
+                   username6,
+                   username7,
+                   username8,
+                   username9,
+                   username10,
+                   username11,
+                   username12
+                   
+                from json_table(PIC_FICHAS,'$[*]'
+                columns (title varchar2(100) path '$.title' ,
+                         profile varchar2(100) path '$.profileCode',
+                         
+                         vendor varchar2(100) path '$.vendor',
+                         username1 varchar2(100) path '$.username1',
+                         username2 varchar2(100) path '$.username2',
+                         username3 varchar2(100) path '$.username3',
+                         username4 varchar2(100) path '$.username4',
+                         username5 varchar2(100) path '$.username5',
+                         username6 varchar2(100) path '$.username6',
+                         username7 varchar2(100) path '$.username7',
+                         username8 varchar2(100) path '$.username8',
+                         username9 varchar2(100) path '$.username9',
+                         username10 varchar2(100) path '$.username10',
+                         username11 varchar2(100) path '$.username11',
+                         username12 varchar2(100) path '$.username12'));
 
-        RETURN l_end_date;
+
+    
+    BEGIN
+    
+        BEGIN
+            --Itera sobre la plantilla de usuarios
+            FOR NEW_FICHAS_REC IN NEW_FICHAS_CUR LOOP
+                
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME1,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME2,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                                                                      
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME3,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                                                                      
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME4,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME5,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                                                                      
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME6,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME7,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME8,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);
+                                                                      
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME9,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);                                                      
+                 
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME10,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);    
+                                                                      
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME11,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);                                                      
+                 
+                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME12,
+                                                                      NEW_FICHAS_REC.PROFILE,
+                                                                      NEW_FICHAS_REC.VENDOR);                                                                       
+            END LOOP;
+            
+            COMMIT;
+        EXCEPTION WHEN OTHERS THEN
+            dbms_output.put_line('Error'||SQLCODE||' -ERROR- '||SQLERRM);
+        END;
     END;
 
-    PROCEDURE active_new_fichas_ps (
-        pic_fichas VARCHAR2
-    ) AS
-
-        PRAGMA autonomous_transaction;
-        CURSOR cur_fichas_new_cur IS
-        SELECT
-            ficha,
-            status
-        FROM
-            JSON_TABLE ( pic_fichas, '$.responseFichas[*]'
-                COLUMNS (
-                    ficha VARCHAR2 ( 100 ) PATH '$.ficha',
-                    status VARCHAR2 ( 100 ) PATH '$.status'
-                )
-            )
-        WHERE
-            status = 'ACTIVE';
-
-        l_end_date DATE;
-    BEGIN
-        FOR cur_fichas_new_rec IN cur_fichas_new_cur LOOP
-    
-        --Obtiene la fecha fin
-
-            l_end_date := get_ficha_end_date(cur_fichas_new_rec.ficha);        
-        
-        --Actualiza la activación
-            UPDATE zd_fichas fichasold
-            SET
-                fichasold.status = cur_fichas_new_rec.status,
-                fichasold.begin_date = sysdate,
-                fichasold.end_date = l_end_date
-            WHERE
-                    1 = 1
-                AND fichasold.name = cur_fichas_new_rec.ficha;
-
-        END LOOP;
-
-        COMMIT;
-    END active_new_fichas_ps;
-
-END zona_d_process_pkg;
+END ZONA_D_PROCESS_PKG;
 /
 
 BEGIN
     DBMS_SCHEDULER.CREATE_JOB (
-            job_name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"',
+            job_name => '"Zona-D"."ZONA_D_ACTIVE_USERS"',
             job_type => 'EXECUTABLE',
-            job_action => 'C:\\zona-d-schedulers\\zona-d-disable-users.bat',
+            job_action => 'C:\\zona-d-schedulers\\zona-d-active-users.bat',
             number_of_arguments => 0,
-            start_date => TO_TIMESTAMP_TZ('2024-11-28 16:50:26.000000000 AMERICA/MEXICO_CITY','YYYY-MM-DD HH24:MI:SS.FF TZR'),
-            repeat_interval => 'FREQ=HOURLY;BYDAY=MON,TUE,WED,THU,FRI,SAT,SUN',
+            start_date => TO_TIMESTAMP_TZ('2024-11-28 22:33:23.977000000 AMERICA/MEXICO_CITY','YYYY-MM-DD HH24:MI:SS.FF TZR'),
+            repeat_interval => 'FREQ=HOURLY;BYTIME=2250;BYDAY=MON,TUE,WED,THU,FRI,SAT,SUN',
             end_date => NULL,
             enabled => FALSE,
             auto_drop => FALSE,
@@ -288,19 +413,33 @@ BEGIN
      
  
     DBMS_SCHEDULER.SET_ATTRIBUTE( 
-             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"', 
+             name => '"Zona-D".""', 
              attribute => 'store_output', value => TRUE);
     DBMS_SCHEDULER.SET_ATTRIBUTE( 
-             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"', 
+             name => '"Zona-D"."ZONA_D_ACTIVE_USERS"', 
              attribute => 'logging_level', value => DBMS_SCHEDULER.LOGGING_OFF);
       
    
   
     
     DBMS_SCHEDULER.enable(
-             name => '"Zona-D"."ZONA-D-ACVIDE-FICHAS"');
+             name => '"Zona-D"."ZONA_D_ACTIVE_USERS"');
 END;
+
 /
+
+
+Insert into "Zona-D".ZD_PROFILES (CODE_PROFILE,PROFILE_NAME,PROFILE_TIME,STATUS) values ('SEM','Zona-D-Semanal-Corrido',7,'Active');
+Insert into "Zona-D".ZD_PROFILES (CODE_PROFILE,PROFILE_NAME,PROFILE_TIME,STATUS) values ('QUI','Zona-D-Quincenal-Corrido',15,'Active');
+Insert into "Zona-D".ZD_PROFILES (CODE_PROFILE,PROFILE_NAME,PROFILE_TIME,STATUS) values ('MEN','Zona-D-Mensual-Corrido',30,'Active');
+Insert into "Zona-D".ZD_PROFILES (CODE_PROFILE,PROFILE_NAME,PROFILE_TIME,STATUS) values ('H24','Zona-D-24Hr-Corrido',1,'Active');
+
+commit;
+
+Insert into "Zona-D".ZD_VENDOR (VENDOR_ID,VENDOR_NAME,LOCATION,STATUS) values ('IRIS','Iris','Taquería Palillo','Active');
+Insert into "Zona-D".ZD_VENDOR (VENDOR_ID,VENDOR_NAME,LOCATION,STATUS) values ('MIGUEL','Iris','Panadería frente a la granda','Active');
+commit;
+
 
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
