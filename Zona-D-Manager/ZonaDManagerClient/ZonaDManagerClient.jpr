@@ -26,12 +26,10 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="Zona-D-Scheduler-Active-Fichas-v2">
+         <hash n="zona-d-scheduler-active-fichas-v1">
             <hash n="archiveOptions">
                <list n="additionalManifests">
-                  <url path="deploy/gson-2.3.1.jar"/>
-                  <url path="deploy/ojdbc8-23.4.0.24.05.jar"/>
-                  <url path="deploy/MANIFEST.MF"/>
+                  <url path="manifest/active-fichas/MANIFEST_v2.MF"/>
                </list>
                <value n="hasManifest" v="true"/>
                <value n="mainClass" v="com.mx.zonaD.services.ZonaDServicesScheduler"/>
@@ -45,9 +43,6 @@
                         </hash>
                         <hash>
                            <value n="type" v="7"/>
-                        </hash>
-                        <hash>
-                           <value n="type" v="6"/>
                         </hash>
                      </list>
                      <value n="displayName" v="Project Output"/>
@@ -64,13 +59,51 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/Zona-D-Scheduler-Active-Fichas-v2.jar"/>
+            <url n="jarURL" path="deploy/zona-d-scheduler-active-fichas-v1.jar"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
-            <value n="profileName" v="Zona-D-Scheduler-Active-Fichas-v2"/>
+            <value n="profileName" v="zona-d-scheduler-active-fichas-v1"/>
+         </hash>
+         <hash n="zona-d-scheduler-disabled-fichas-v2">
+            <hash n="archiveOptions">
+               <list n="additionalManifests">
+                  <url path="manifest/disabled-fichas/MANIFEST_v2.MF"/>
+               </list>
+               <value n="hasManifest" v="true"/>
+               <value n="mainClass" v="com.mx.zonaD.services.ZonaDServicesSchedulerDisabled"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/zona-d-scheduler-disabled-fichas-v2.jar"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
+            <value n="profileName" v="zona-d-scheduler-disabled-fichas-v2"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="Zona-D-Scheduler-Active-Fichas-v2"/>
+         <string v="zona-d-scheduler-active-fichas-v1"/>
+         <string v="zona-d-scheduler-disabled-fichas-v2"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">

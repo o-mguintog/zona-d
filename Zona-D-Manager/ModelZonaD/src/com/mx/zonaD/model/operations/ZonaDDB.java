@@ -6,6 +6,7 @@ import static com.mx.zonaD.model.constants.ZonaDConstantsDB.USERNAME;
 import static com.mx.zonaD.model.constants.ZonaDConstantsDB.PASSWORD;
 
 import static com.mx.zonaD.model.queries.ZonaDQueries.GET_FICHAS_NEW;
+import static com.mx.zonaD.model.queries.ZonaDQueries.GET_FICHAS_ACTIVE;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,6 +24,8 @@ import java.sql.CallableStatement;
  * @author Manuel Guinto.
  */
 public class ZonaDDB {
+    
+    private static final String NO_DATA_FOUND="{\"responseFichas\":}";
 
     /**
      * Constructor por defecto.
@@ -85,7 +88,7 @@ public class ZonaDDB {
                 if(resultSet != null && resultSet.next()){
                     jsonFichas = resultSet.getString(1);
                     
-                    if (jsonFichas != null){
+                    if (jsonFichas != null && !jsonFichas.equals(NO_DATA_FOUND)){
                         
                         Gson gson = new Gson();                        
                         response = gson.fromJson(jsonFichas, FichasResponse.class);
@@ -172,8 +175,165 @@ public class ZonaDDB {
         }
     }
     
-    public static void main(String[] args) {
+    /**
+     * Procesa las nuevas fichas.
+     * @param fichasNew Fichas nuevas.
+     */
+    public static void disabledFichas(String fichasNew){
         
-       
-   }
+        //Obtiene la conexión a la BD-
+        Connection connection =null;
+        CallableStatement cs =null;
+        connection = getConnection();                
+        
+        //Verifica la conexión a BD
+        if (connection != null){
+            
+            try {
+                cs = connection.prepareCall("{call ZONA_D_PROCESS_PKG.DISABLED_FICHAS_PS(?)}");
+                cs.setString(1, fichasNew);                
+                cs.executeQuery();
+                //connection.commit();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally{
+                try {
+                    //Cierra el resultado
+                    if (cs != null && !cs.isClosed()){
+                        cs.close();    
+                    }
+                                  
+                    //Cierra la conexión
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    
+                    //Nulifica los recursos                    
+                    connection = null;
+                    
+                    e.printStackTrace();
+                }
+            }
+        
+        }
+    }
+    
+    /**
+     * Obtiene las fichas nuevas de Zona D.
+     * 
+     * @return Fichas activas en formato JSON.
+     */
+    public static FichasResponse getFichasActive(){
+        
+        Connection connection =null;
+        String jsonFichas=null;
+        FichasResponse response =null;
+        
+        //Obtiene la conexión a la BD-
+        connection = getConnection();                
+        
+        //Verifica la conexión a BD
+        if (connection != null){
+            
+            //Declara los recursos
+            ResultSet resultSet = null;
+            Statement statement = null;
+            try{
+                
+                //Ejecuta la sentencia 
+                statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+                resultSet = statement.executeQuery(GET_FICHAS_ACTIVE);
+                
+                //Verifica si se obtuvieron resultados
+                if(resultSet != null && resultSet.next()){
+                    jsonFichas = resultSet.getString(1);
+                    
+                    if (jsonFichas != null && !jsonFichas.equals(NO_DATA_FOUND)){
+                        
+                        Gson gson = new Gson();                        
+                        response = gson.fromJson(jsonFichas, FichasResponse.class);
+                    }
+                }                
+                
+            }catch(SQLException e){
+                e.printStackTrace();
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                try {
+                    //Cierra el resultado
+                    if (resultSet != null && !resultSet.isClosed()){
+                        resultSet.close();    
+                    }
+                    
+                    //Cierra la sentencia
+                    if (statement != null && !statement.isClosed()){
+                        statement.close();    
+                    }
+                                        
+                    //Cierra la conexión
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    
+                    //Nulifica los recursos
+                    resultSet = null;
+                    statement = null;
+                    connection = null;
+                    
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return response;
+    }
+    
+    /**
+     * Registra las nuevas fichas.
+     * @param fichasNew Fichas nuevas.
+     */
+    public static void registerFichas(String fichasNew){
+        
+        //Obtiene la conexión a la BD-
+        Connection connection =null;
+        CallableStatement cs =null;
+        connection = getConnection();                
+        
+        //Verifica la conexión a BD
+        if (connection != null){
+            
+            try {
+                cs = connection.prepareCall("{call ZONA_D_PROCESS_PKG.REGISTER_FICHAS_PS(?)}");
+                cs.setString(1, fichasNew);                
+                cs.executeQuery();
+                //connection.commit();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally{
+                try {
+                    //Cierra el resultado
+                    if (cs != null && !cs.isClosed()){
+                        cs.close();    
+                    }
+                                  
+                    //Cierra la conexión
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    
+                    //Nulifica los recursos                    
+                    connection = null;
+                    
+                    e.printStackTrace();
+                }
+            }
+        
+        }
+    }
 }

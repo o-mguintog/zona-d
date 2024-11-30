@@ -34,6 +34,60 @@ public class ZonaDModelService {
         return fichasBD;        
     }
     
+    /**
+     * Obtiene las fichas activas que no han sido activadas en la BD.
+     * 
+     * @return Fichas nuevas.
+     */
+    public static FichasResponse getFichasActive(){
+        
+        FichasResponse fichasBD=null;
+        try{
+            fichasBD = ZonaDDB.getFichasActive();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return fichasBD;        
+    }
+
+    /**
+     * Deshabilita las fichas.
+     * @param fichasNew Fichas a deshabilitar
+     */
+    public static void disabledFichas(String fichasNew){
+                
+        try{
+            ZonaDDB.disabledFichas(fichasNew);
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }
     
+    
+    /**
+     * Activa las fichas.
+     * @param fichasNew Fichas a deshabilitar
+     */
+    public static void processNewFichas(String fichasNew){
+                
+        try{
+            ZonaDDB.processNewFichas(fichasNew);
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }
+    
+    /**
+     * Registra las fichas.
+     * @param fichasNew Fichas a deshabilitar
+     */
+    public static void registerFichas(String fichasNew){
+                
+        try{
+            ZonaDDB.registerFichas(fichasNew);
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }
     
 }

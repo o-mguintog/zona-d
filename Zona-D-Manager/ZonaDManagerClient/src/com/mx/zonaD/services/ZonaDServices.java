@@ -15,14 +15,16 @@ import java.util.Map;
 import java.util.UUID;
 import com.google.gson.Gson;
 
-import com.mx.zonaD.model.operations.ZonaDDB;
 import com.mx.zonaD.model.services.ZonaDModelService;
 import com.mx.zonaD.model.services.response.FichasResponse;
 
 import me.legrange.mikrotik.*;
 
 import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ENABLED_USERS;
-
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.DISABLED_USER;
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_USERS_MKT;
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.ID_MKT;
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ACTIVE_USERS;
 /**
  * La clase <code>ZonaDServices</code> es utilizada para gestionar usuarios de mikrotik.
  * 
@@ -76,7 +78,7 @@ public class ZonaDServices {
      *      
      * @param paquete Nombre del paquete.
      */
-    public UserType createUsers9Template(String prefijo, String paquete){
+    public UserType createUsers9Template(String prefijo, String paquete, String vendor){
         
         UserType userGroup = new UserType();        
         
@@ -84,7 +86,7 @@ public class ZonaDServices {
             //Genera la conexión a mikrotik
             connect();
             
-            userGroup = createUsers(prefijo,12,paquete);
+            userGroup = createUsers(prefijo,12,paquete,vendor);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -115,7 +117,7 @@ public class ZonaDServices {
      * @param numUsuarios N&uacute;mero de usuarios a generar
      * @param paquete Nombre del paquete.     
      */
-    public UserType createUsers(String prefijo, Integer numUsuarios, String paquete){
+    public UserType createUsers(String prefijo, Integer numUsuarios, String paquete, String vendor){
         
         UserType usersPackages = new UserType();
         //Verifica la conexión a mikrotik
@@ -126,7 +128,7 @@ public class ZonaDServices {
                 //Itera sobre los usuarios a crear
                 for(int numUser =1; numUser<= numUsuarios; numUser++){
                     //Obtiene la sentencia de creación de usuarios
-                    String statement = getStatementCreateUser(prefijo,paquete,usersPackages,numUser);                    
+                    String statement = getStatementCreateUser(prefijo,paquete,usersPackages,numUser,vendor);                    
                     
                     //Ejecuta la sentencia para la creación de usuarios
                     mkConnection.execute(statement);
@@ -147,7 +149,7 @@ public class ZonaDServices {
      * 
      * @return Sentencia a ejecutar.
      */
-    private String getStatementCreateUser(String prefijo, String paquete,UserType usersPackages,Integer numUser){
+    private String getStatementCreateUser(String prefijo, String paquete,UserType usersPackages,Integer numUser, String vendor){
         
         final String CREATE_USER="/ip/hotspot/user/add ";
         
@@ -204,7 +206,7 @@ public class ZonaDServices {
         statement.append(limit);  
         
         //Inicializa el usuario en el objeto usuarios        
-        initUserPackage(usersPackages,numUser,user,password);
+        initUserPackage(usersPackages,numUser,user,password, prefijo.toUpperCase(), vendor);
         
         
         return statement.toString();
@@ -217,7 +219,7 @@ public class ZonaDServices {
      * @param numUser N&uacute;mero de usuario.
      * @return Grupo de usuarios inicializados.
      */
-    private void initUserPackage(UserType userPackage, Integer numUser, String username, String password){
+    private void initUserPackage(UserType userPackage, Integer numUser, String username, String password,String profileCode, String vendor){
         
         switch(numUser){
             
@@ -278,6 +280,8 @@ public class ZonaDServices {
                 break;        
         }
         
+        userPackage.setProfileCode(profileCode);
+        userPackage.setVendor(vendor);        
     }
 
     /**
@@ -293,16 +297,19 @@ public class ZonaDServices {
             if (mkConnection != null){                        
                 
                 try {              
-                    //Obtiene los usuarios activos                                        
+                    //Obtiene los usuarios                                         
                     List<Map<String, String>>mktUsers = mkConnection.execute(GET_ENABLED_USERS);
+                    
+                    //Obtiene las fichas activas
+                    List<Map<String, String>>mktUsersActives = mkConnection.execute(GET_ACTIVE_USERS);
                     
                     FichasResponse fichasBD=null;
                     fichasBD = ZonaDModelService.getFichasNew();                    
-                    String newFichas = getNewFichasActived(mktUsers,fichasBD);
+                    String newFichas = getNewFichasActived(mktUsers,fichasBD, mktUsersActives);
                     
                     //Verifica que existan fichas a procesar
                     if(newFichas != null){
-                        ZonaDDB.processNewFichas(newFichas);                        
+                        ZonaDModelService.processNewFichas(newFichas);                        
                     }
                     
                 } catch (MikrotikApiException e) {
@@ -330,12 +337,13 @@ public class ZonaDServices {
      * @param mktUsers Usuarios mikrotik
      * @param fichasBD Fichas nuevas de la BD.
      */
-    public String getNewFichasActived(List<Map<String, String>>mktUsers, FichasResponse fichasBD){
+    public String getNewFichasActived(List<Map<String, String>>mktUsers, FichasResponse fichasBD, List<Map<String, String>>mktUsersActives ){
         
         final String NAME="name";
         final String ACTIVE ="ACTIVE";
         
         boolean isChanged = false;
+        boolean isFichaActiva = false;
         List<FichasType> fichaBDList =null;
         String jsonUsers =null;
         
@@ -345,24 +353,44 @@ public class ZonaDServices {
             return null;
         }
         
-        if(mktUsers != null && !mktUsers.isEmpty()){
+        if(mktUsers != null){
                         
             fichaBDList = fichasBD.getResponseFichas();
             
             //Itera sobre los usuarios de BD.
             for (FichasType fichaBD: fichaBDList){
                 
+                
                 //Itera sobre los usuarios mikrotik
-                for( Map<String, String> currentUser : mktUsers){
+                for( Map<String, String> currentUser : mktUsersActives){
                     
                     //Busca la ficha nueva de BD en la lista de fichas iniciadas Mikrotik
-                    if(currentUser.get(NAME).equals(fichaBD.getFicha())){
+                    if(currentUser.get("user") != null && currentUser.get("user").equals(fichaBD.getFicha())){
                         System.out.println("Ficha "+currentUser.get(NAME)+" ya iniciada");    
                         fichaBD.setStatus(ACTIVE);
                         isChanged = true;
+                        isFichaActiva = true;
                         break;
                     }                    
-                }                
+                }
+                
+                //Si no encontró activa la ficha la busca en los usuarios
+                if (!isFichaActiva){
+                    //Itera sobre los usuarios mikrotik
+                    for( Map<String, String> currentUser : mktUsers){
+                        
+                        //Busca la ficha nueva de BD en la lista de fichas iniciadas Mikrotik
+                        if(currentUser.get(NAME) != null && currentUser.get(NAME).equals(fichaBD.getFicha())){
+                            System.out.println("Ficha "+currentUser.get(NAME)+" ya iniciada");    
+                            fichaBD.setStatus(ACTIVE);
+                            isChanged = true;
+                            
+                            break;
+                        }                    
+                    }
+                }
+                
+                isFichaActiva = false;                    
             }                        
         }
         
@@ -374,6 +402,75 @@ public class ZonaDServices {
         }
         
         return jsonUsers;        
+    }
+    
+    /**
+     * Desactiva fichas.
+     */
+    public void disabledFichas(){                
+        
+        boolean isChanged = false;
+        String jsonUsers = null;
+        final String FINISHED="FINISHED";
+        try {
+            //Genera la conexión a mikrotik
+            connect();
+            
+            //Verifica la conexión a mikrotik
+            if (mkConnection != null){                        
+                
+                try {              
+                    //Obtiene los usuarios activos                                        
+                    FichasResponse fichasBD=null;
+                    fichasBD = ZonaDModelService.getFichasActive();                    
+                   
+                   //Verifica si hay fichas para desactivar
+                    if(fichasBD != null && fichasBD.getResponseFichas() != null && !fichasBD.getResponseFichas().isEmpty()){
+                        
+                        
+                        List<FichasType> fichasToDisabled = fichasBD.getResponseFichas();
+                        //Itera las fichas de BD a deshabilitar
+                        for(FichasType currentFicha : fichasToDisabled){
+                            
+                            //Busca el ID del usuario Mikrotik                            
+                            List<Map<String, String>> res = mkConnection.execute(GET_USERS_MKT+currentFicha.getFicha());
+                            //Itera sobre los atributos para deshabilitarlo
+                            for (Map<String, String> attr : res) {
+                                String id = attr.get(ID_MKT);
+                                mkConnection.execute(DISABLED_USER +ID_MKT + " =" + id);
+                                isChanged = true;
+                                currentFicha.setStatus(FINISHED);
+                                break;
+                            }
+                            
+                        }
+                    }
+                    
+                    //Verifica si hubo cambios
+                    if(isChanged){
+                        //Convert List to JSON
+                        Gson gson = new Gson();
+                        jsonUsers = gson.toJson(fichasBD);   
+                        ZonaDModelService.disabledFichas(jsonUsers); 
+                    }
+                    
+                } catch (MikrotikApiException e) {
+                    //Imprime el error
+                    e.printStackTrace();
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            
+            try {
+                //Se desconecta del mikrotik
+                disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -395,22 +492,22 @@ public class ZonaDServices {
 
             //Crea el primer grupo de 12 usuarios por paquete
             UserType userGroup = null;
-            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido");
+            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido","IRIS");
             userGroup.setTitle("Plan 24 Hrs");
             userGroups.add(userGroup);  
                 
             userGroup = null;
-            userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido");
+            userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido","IRIS");
             userGroup.setTitle("Plan Semanal");
             userGroups.add(userGroup);
             
             userGroup = null;
-            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido");
+            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido","IRIS");
             userGroup.setTitle("Plan Quincenal");
             userGroups.add(userGroup);
             
             userGroup = null;
-            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido");
+            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido","IRIS");
             userGroup.setTitle("Plan Mensual");
             userGroups.add(userGroup);
             
@@ -418,18 +515,15 @@ public class ZonaDServices {
         //Note: falta transformar el objeto de grupo de usuarios a json
         Gson gson = new Gson();
         String jsonTemplate = gson.toJson(userGroups);
- 
         
         try {
+            //Genera las fichas en la BD
+            ZonaDModelService.registerFichas(jsonTemplate);
+            
             //Guarda el archivo json
             ZonaDServicesUtils.generateJsonFile(jsonTemplate);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
-
-    }
-
-    
+    }    
 }

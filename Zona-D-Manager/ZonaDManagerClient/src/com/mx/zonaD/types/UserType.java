@@ -12,7 +12,7 @@ public class UserType implements java.io.Serializable{
     /**
      * Versi&oacute;n de la clase.
      */
-    @SuppressWarnings("compatibility:774848409277990823")
+    @SuppressWarnings("compatibility:6709120307475572961")
     private static final long serialVersionUID = 1L;
 
 
@@ -140,6 +140,17 @@ public class UserType implements java.io.Serializable{
      * Password
      */
     private String password12;
+
+    /**
+     * Paquete asignado.
+     */
+    private String profileCode;
+
+
+    /**
+     * Vendedor asignado a la ficha.
+     */
+    private String vendor;
 
 
     /**
@@ -347,5 +358,21 @@ public class UserType implements java.io.Serializable{
 
     public String getPassword12() {
         return password12;
+    }
+
+    public void setProfileCode(String profileCode) {
+        this.profileCode = profileCode;
+    }
+
+    public String getProfileCode() {
+        return profileCode;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
+
+    public String getVendor() {
+        return vendor;
     }
 }
