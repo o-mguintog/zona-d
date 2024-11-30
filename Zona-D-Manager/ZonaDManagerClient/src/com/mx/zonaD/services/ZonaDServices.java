@@ -180,16 +180,17 @@ public class ZonaDServices {
         
         
         limit= packages.get(paquete);
-        user= prefijo+"-"+password;        
+        user= prefijo+"-"+password;  
+        password = "";
         
         //Usuario
         statement.append("name=");
         statement.append(user);
         
         //Password:
-        statement.append(SPACE);
-        statement.append("password=");
-        statement.append(password);
+        //statement.append(SPACE);
+        //statement.append("password=");
+        //statement.append(password);
         
         //Password:
         statement.append(SPACE);
