@@ -53,7 +53,10 @@ public class ZonaDServices {
      * @throws Exception Excepci&oacute;n generada.
      */
     public void disconnect() throws Exception {
-        mkConnection.close();
+        if (mkConnection != null){
+            mkConnection.close();    
+        }
+        
     }
 
 
@@ -65,10 +68,11 @@ public class ZonaDServices {
     public void connect() throws Exception {        
         
         //Obtiene la conexión a mikrotik
-        mkConnection = ApiConnection.connect(AnonymousSocketFactory.getDefault(), 
+        /*mkConnection = ApiConnection.connect(AnonymousSocketFactory.getDefault(), 
                                     Config.HOST, 
-                                    ApiConnection.DEFAULT_TLS_PORT, 
-                                    ApiConnection.DEFAULT_CONNECTION_TIMEOUT);
+                                    ApiConnection.DEFAULT_PORT, 
+                                    ApiConnection.DEFAULT_CONNECTION_TIMEOUT);*/
+        mkConnection = ApiConnection.connect(Config.HOST);
         //Se loguea a mikrotik
         mkConnection.login(Config.USERNAME, Config.PASSWORD);
     }
@@ -493,22 +497,23 @@ public class ZonaDServices {
 
             //Crea el primer grupo de 12 usuarios por paquete
             UserType userGroup = null;
-            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido","IRIS");
+            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido","MIGUEL");
             userGroup.setTitle("Plan 24 Hrs");
             userGroups.add(userGroup);  
-                
+            
+            
             userGroup = null;
-            userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido","IRIS");
+            userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido","MIGUEL");
             userGroup.setTitle("Plan Semanal");
             userGroups.add(userGroup);
             
             userGroup = null;
-            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido","IRIS");
+            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido","MIGUEL");
             userGroup.setTitle("Plan Quincenal");
             userGroups.add(userGroup);
             
             userGroup = null;
-            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido","IRIS");
+            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido","MIGUEL");
             userGroup.setTitle("Plan Mensual");
             userGroups.add(userGroup);
             

@@ -23,7 +23,7 @@
     $(if chap-id)
     <form name="sendin" action="$(link-login-only)" method="post">
         <input type="hidden" name="username" />
-        <!--<input type="hidden" name="password" />-->
+        <input type="hidden" name="password" />
         <input type="hidden" name="dst" value="$(link-orig)" />
         <input type="hidden" name="popup" value="true" />
     </form>
@@ -34,8 +34,8 @@
         function doLogin() {
 		
             document.sendin.username.value = document.login.username.value.toLowerCase();
-            //document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value.toLowerCase() + '$(chap-challenge)');
-			document.sendin.password.value = '';
+            document.sendin.password.value = hexMD5('$(chap-id)' + '' + '$(chap-challenge)');
+			//document.sendin.password.value = '';
             document.sendin.submit();
             return false;
         }
@@ -66,8 +66,8 @@
         
 		
 		
-        <input name="username" class="text" type="text" value="$(username)" placeholder="Usuario" size="30" />
-        <!--<input autocomplete="off" class="password" name="password" type="password" label="false" placeholder="Contraseña" size="20" />-->
+        <input name="username" class="text" type="text" value="$(username)" placeholder="Código" size="30" />
+        <input autocomplete="off" class="password" name="password" type="hidden" label="false" placeholder="Contraseña" size="20" />
         <input name="submit" type="submit" value=" " />
 		
 		<div class="flex-container">

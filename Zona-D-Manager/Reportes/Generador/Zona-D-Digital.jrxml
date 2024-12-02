@@ -129,16 +129,10 @@
 				<text><![CDATA[Paquete:]]></text>
 			</element>
 			<element kind="staticText" uuid="a5cc5bcc-2c94-4af4-9525-a0b10b6fddea" x="217" y="149" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
-				<text><![CDATA[Usuario:]]></text>
+				<text><![CDATA[Código:]]></text>
 			</element>
-			<element kind="textField" uuid="280dda86-4989-4589-988a-28f213c458d0" x="265" y="149" width="95" height="20" fontName="Anton" fontSize="13.0">
+			<element kind="textField" uuid="280dda86-4989-4589-988a-28f213c458d0" x="259" y="149" width="95" height="20" fontName="Anton" fontSize="13.0">
 				<expression><![CDATA[$F{username1}]]></expression>
-			</element>
-			<element kind="textField" uuid="02c6a8c1-441a-4384-98b3-eb8294688f06" x="265" y="165" width="75" height="20" fontName="Anton" fontSize="13.0">
-				<expression><![CDATA[$F{password1}]]></expression>
-			</element>
-			<element kind="staticText" uuid="df12b2f6-406a-4bb7-a06b-556f0b51f62e" x="217" y="165" width="72" height="20" fontName="Anton" fontSize="13.0" bold="true">
-				<text><![CDATA[Clave:]]></text>
 			</element>
 			<element kind="textField" uuid="33d25264-3912-4534-a156-076c3240d0c8" x="210" y="59" width="130" height="20" fontName="Anton" fontSize="13.0" hTextAlign="Center">
 				<expression><![CDATA[$F{title}]]></expression>

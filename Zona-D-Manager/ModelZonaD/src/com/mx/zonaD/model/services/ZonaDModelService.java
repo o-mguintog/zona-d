@@ -90,4 +90,9 @@ public class ZonaDModelService {
         }        
     }
     
+    public static void main(String[] args) {
+       ZonaDModelService.getFichasActive()
+        ;
+   }
+    
 }
