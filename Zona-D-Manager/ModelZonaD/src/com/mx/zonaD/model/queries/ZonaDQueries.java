@@ -9,7 +9,7 @@ public class ZonaDQueries {
     /**
      * Obtiene las fichas nuevas.
      */
-    public static final String GET_FICHAS_NEW =" SELECT '{\"responseFichas\":'||Info2.jsonValue||'}' FROM ( SELECT JSON_ARRAYAGG (JSON_OBJECT( 'ficha' IS Info.NAME, 'status' IS Info.STATUS) )jsonValue FROM ( SELECT NAME, STATUS FROM zd_fichas WHERE 1 = 1 AND STATUS = 'NEW' )Info )Info2 ";
+    public static final String GET_FICHAS_NEW =" SELECT '{\"responseFichas\":'||Info2.jsonValue||'}' FROM ( SELECT JSON_ARRAYAGG (JSON_OBJECT( 'ficha' IS Info.NAME, 'status' IS Info.STATUS)RETURNING CLOB )jsonValue FROM ( SELECT NAME, STATUS FROM zd_fichas WHERE 1 = 1 AND STATUS = 'NEW' )Info )Info2 ";
 
     /**
      * Obtiene las fichas activas.

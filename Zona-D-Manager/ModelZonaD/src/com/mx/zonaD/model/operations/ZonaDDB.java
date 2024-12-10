@@ -16,7 +16,11 @@ import com.google.gson.Gson;
 
 import com.mx.zonaD.model.services.response.FichasResponse;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 import java.sql.CallableStatement;
+import java.sql.Clob;
 
 /**
  * La clase <code>ZonaDDB</code> hace la conexi&oacute;n a la BD de Zona D.
@@ -66,7 +70,8 @@ public class ZonaDDB {
     public static FichasResponse getFichasNew(){
         
         Connection connection =null;
-        String jsonFichas=null;
+        Clob jsonFichas=null;
+        String jsonString=null;
         FichasResponse response =null;
         
         //Obtiene la conexión a la BD-
@@ -86,12 +91,14 @@ public class ZonaDDB {
                 
                 //Verifica si se obtuvieron resultados
                 if(resultSet != null && resultSet.next()){
-                    jsonFichas = resultSet.getString(1);
+                    jsonFichas = resultSet.getClob(1);
                     
                     if (jsonFichas != null && !jsonFichas.equals(NO_DATA_FOUND)){
                         
+                        jsonString = getClobString(jsonFichas);
+                        
                         Gson gson = new Gson();                        
-                        response = gson.fromJson(jsonFichas, FichasResponse.class);
+                        response = gson.fromJson(jsonString, FichasResponse.class);
                     }
                 }                
                 
@@ -129,6 +136,20 @@ public class ZonaDDB {
         
         return response;
     }
+    
+    public static String getClobString(Clob clob) throws SQLException, IOException {
+            if(clob == null){
+                return null;
+            }
+            BufferedReader stringReader = new BufferedReader(clob.getCharacterStream());
+            String singleLine = null;
+            StringBuffer strBuff = new StringBuffer();
+            while ((singleLine = stringReader.readLine()) != null) {
+                strBuff.append(singleLine);
+            }
+            return strBuff.toString();
+        }
+
 
     /**
      * Procesa las nuevas fichas.

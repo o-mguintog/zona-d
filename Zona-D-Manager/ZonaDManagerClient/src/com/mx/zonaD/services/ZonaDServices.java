@@ -180,7 +180,7 @@ public class ZonaDServices {
         packages.put("Zona-D-Flash-Corrido", "00:30:00");
         packages.put("Zona-D-Mensual-Corrido", "30d");
         packages.put("Zona-D-Quincenal-Corrido", "15d");
-        packages.put("Zona-D-Semanal-Corrido", "15d");
+        packages.put("Zona-D-Semanal-Corrido", "7d");
         
         
         limit= packages.get(paquete);
@@ -500,7 +500,7 @@ public class ZonaDServices {
             userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido","MIGUEL");
             userGroup.setTitle("Plan 24 Hrs");
             userGroups.add(userGroup);  
-            
+/*            
             
             userGroup = null;
             userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido","MIGUEL");
@@ -515,7 +515,7 @@ public class ZonaDServices {
             userGroup = null;
             userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido","MIGUEL");
             userGroup.setTitle("Plan Mensual");
-            userGroups.add(userGroup);
+            userGroups.add(userGroup);*/
             
        // }
         //Note: falta transformar el objeto de grupo de usuarios a json
