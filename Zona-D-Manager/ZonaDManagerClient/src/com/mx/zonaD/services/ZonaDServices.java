@@ -184,7 +184,7 @@ public class ZonaDServices {
         
         
         limit= packages.get(paquete);
-        user= prefijo+"-"+password;  
+        user= prefijo.toLowerCase()+"-"+password;  
         password = "";
         
         //Usuario

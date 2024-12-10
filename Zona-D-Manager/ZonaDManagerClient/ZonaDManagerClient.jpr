@@ -26,6 +26,43 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
+         <hash n="zona-d-create-fichas-v3">
+            <hash n="archiveOptions">
+               <list n="additionalManifests">
+                  <url path="manifest/create-fichas/MANIFEST_v3.MF"/>
+               </list>
+               <value n="hasManifest" v="true"/>
+               <value n="mainClass" v="com.mx.zonaD.services.ZonaDServicesCreateFichas"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/zona-d-create-fichas-v3.jar"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
+            <value n="profileName" v="zona-d-create-fichas-v3"/>
+         </hash>
          <hash n="zona-d-scheduler-active-fichas-v1">
             <hash n="archiveOptions">
                <list n="additionalManifests">
@@ -102,6 +139,7 @@
          </hash>
       </hash>
       <list n="profileList">
+         <string v="zona-d-create-fichas-v3"/>
          <string v="zona-d-scheduler-active-fichas-v1"/>
          <string v="zona-d-scheduler-disabled-fichas-v2"/>
       </list>
