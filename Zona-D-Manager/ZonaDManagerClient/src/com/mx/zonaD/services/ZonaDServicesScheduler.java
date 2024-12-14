@@ -14,7 +14,11 @@ public class ZonaDServicesScheduler {
     public ZonaDServicesScheduler() {
         super();
     }
-    
+
+    /**
+     * Proceso de activaci&oacute;n de fichas en la BD.
+     * @param args Argumentos.
+     */
     public static void main(String[] args) {
         ZonaDServices services = new ZonaDServices();
         services.activeFichas();        

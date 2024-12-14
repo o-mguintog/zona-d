@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="ZD_FICHAS" directorySegmentName="seg_0" id="DA963C2D-FDBD-628F-7B30-407F75ABD48C">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:45 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<schemaObject>1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3028C75D-7443-B170-1879-D306EBDAA1E9</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="BEGIN_DATE" id="35CDD979-4961-6CA9-DB1C-FA58A4085026">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="5924C835-B1DC-422A-C295-521573BEADF6">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PROFILE" id="5E7F8930-823E-AC2B-81BE-60CB06A1DF44">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUS" id="6814FC7E-A931-D8FB-E387-F697736801CF">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<defaultValue>&apos;NEW&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="END_DATE" id="98E6EAD8-CA15-5D36-569C-BFC0F02EB4FA">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IS_PAYMENT" id="A3C39426-9077-C074-9EA0-99E44C7FDA94">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<defaultValue>&apos;N&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="COMMENTS" id="BABA29E1-E6BB-66F1-E8DC-11A80B3C7B92">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CREATION_DATE" id="CF022DDE-A2E3-C9AB-7655-E1D082B24657">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<defaultValue>sysdate</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="VENDOR_ID" id="F1305D20-E88C-35E0-6080-E518B364D6CC">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="USERS_PK" id="5DED4EAD-56E4-7FD1-8E8F-31555B32248F">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<schemaObject>1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB</schemaObject>
+<segment>36A779FB-E6D7-F478-2A68-C5157B16B73D</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="ZD_FICHAS_ZD_VENDOR_FK" id="22A6D7C3-8AE3-F9AD-894C-39DAC48CB82F">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="ZD_USERS_ZD_PROFILES_FK" id="A22C70F4-8F41-7713-14D0-2F5EFC15565A">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="USERS_PK" id="6BACD1AF-6CE5-06E9-D380-0E6C46944D3C">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<segment>36A779FB-E6D7-F478-2A68-C5157B16B73D</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+<existingIndex>5DED4EAD-56E4-7FD1-8E8F-31555B32248F</existingIndex>
+<indexSegment>36A779FB-E6D7-F478-2A68-C5157B16B73D</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.storage.oracle.TableCheckConstraintOracle">
+<TableCheckConstraint name="SYS_C008321" id="1CD31B2F-A93D-DE79-1D0E-74523E255B98">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</TableCheckConstraint>
+<TableCheckConstraint name="SYS_C008320" id="6FFEA63C-345E-EE04-4D09-275964C2E2FF">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</TableCheckConstraint>
+<TableCheckConstraint name="SYS_C008318" id="87B59693-72C2-C2E1-9C81-CE6142F577E8">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</TableCheckConstraint>
+<TableCheckConstraint name="STATUS_FK" id="AB18FDDC-0C06-C8F7-55C3-64C96845B81E">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nameChanged>true</nameChanged>
+</TableCheckConstraint>
+<TableCheckConstraint name="SYS_C008319" id="FAE3AB83-C025-7DB7-5BEE-98980A5AEC61">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</TableCheckConstraint>
+</tableCheckConstraints>
+</TableProxyOraclev20c>

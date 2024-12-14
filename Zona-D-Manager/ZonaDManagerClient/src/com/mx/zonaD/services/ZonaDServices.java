@@ -1,33 +1,30 @@
 package com.mx.zonaD.services;
 
-import com.mx.zonaD.services.utils.ZonaDServicesUtils;
-import com.mx.zonaD.model.types.FichasType;
-import com.mx.zonaD.types.UserType;
-
-import examples.AnonymousSocketFactory;
-import examples.Config;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import java.util.UUID;
 import com.google.gson.Gson;
 
 import com.mx.zonaD.model.services.ZonaDModelService;
 import com.mx.zonaD.model.services.response.FichasResponse;
-
-import me.legrange.mikrotik.*;
-
-import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ENABLED_USERS;
+import com.mx.zonaD.model.types.FichasType;
 import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.DISABLED_USER;
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ACTIVE_USERS;
+import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ENABLED_USERS;
 import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_USERS_MKT;
 import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.ID_MKT;
-import static com.mx.zonaD.services.comands.ZonaDMikrotikCommands.GET_ACTIVE_USERS;
+import com.mx.zonaD.types.UserType;
+
+import examples.Config;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import me.legrange.mikrotik.ApiConnection;
+import me.legrange.mikrotik.MikrotikApiException;
+
 /**
  * La clase <code>ZonaDServices</code> es utilizada para gestionar usuarios de mikrotik.
- * 
+ *
  * @author Mikrotik
  * @author Manuel Guinto.
  */
@@ -66,12 +63,7 @@ public class ZonaDServices {
      * @throws Exception Excepci&oacute;n generada.
      */
     public void connect() throws Exception {        
-        
-        //Obtiene la conexión a mikrotik
-        /*mkConnection = ApiConnection.connect(AnonymousSocketFactory.getDefault(), 
-                                    Config.HOST, 
-                                    ApiConnection.DEFAULT_PORT, 
-                                    ApiConnection.DEFAULT_CONNECTION_TIMEOUT);*/
+                
         mkConnection = ApiConnection.connect(Config.HOST);
         //Se loguea a mikrotik
         mkConnection.login(Config.USERNAME, Config.PASSWORD);
@@ -190,11 +182,6 @@ public class ZonaDServices {
         //Usuario
         statement.append("name=");
         statement.append(user);
-        
-        //Password:
-        //statement.append(SPACE);
-        //statement.append("password=");
-        //statement.append(password);
         
         //Password:
         statement.append(SPACE);
@@ -371,7 +358,7 @@ public class ZonaDServices {
                     
                     //Busca la ficha nueva de BD en la lista de fichas iniciadas Mikrotik
                     if(currentUser.get("user") != null && currentUser.get("user").equals(fichaBD.getFicha())){
-                        System.out.println("Ficha "+currentUser.get(NAME)+" ya iniciada");    
+                        
                         fichaBD.setStatus(ACTIVE);
                         isChanged = true;
                         isFichaActiva = true;
@@ -386,10 +373,9 @@ public class ZonaDServices {
                         
                         //Busca la ficha nueva de BD en la lista de fichas iniciadas Mikrotik
                         if(currentUser.get(NAME) != null && currentUser.get(NAME).equals(fichaBD.getFicha())){
-                            System.out.println("Ficha "+currentUser.get(NAME)+" ya iniciada");    
-                            fichaBD.setStatus(ACTIVE);
-                            isChanged = true;
                             
+                            fichaBD.setStatus(ACTIVE);
+                            isChanged = true;                            
                             break;
                         }                    
                     }
@@ -477,59 +463,4 @@ public class ZonaDServices {
             }
         }
     }
-
-    /**
-     * Cliente para ejecutar la funcionalidad de administraci&oacute;n de vouchers.
-     * @param args Argumentos.
-     */
-    @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
-        
-        
-        //Inicializa la lista de usuarios
-        ZonaDServices services = new ZonaDServices();        
-        
-        //Inicializa el grupo de usuarios
-        List<UserType> userGroups = new ArrayList<UserType>();
-        
-        //Genera grupo de fichas de 1 hr, equivalente a 24 fichas
-        //for(int ij=0;ij<2;ij++){
-
-            //Crea el primer grupo de 12 usuarios por paquete
-            UserType userGroup = null;
-            userGroup = services.createUsers9Template("h24","Zona-D-24Hr-Corrido","MIGUEL");
-            userGroup.setTitle("Plan 24 Hrs");
-            userGroups.add(userGroup);  
-/*            
-            
-            userGroup = null;
-            userGroup = services.createUsers9Template("sem","Zona-D-Semanal-Corrido","MIGUEL");
-            userGroup.setTitle("Plan Semanal");
-            userGroups.add(userGroup);
-            
-            userGroup = null;
-            userGroup = services.createUsers9Template("qui","Zona-D-Quincenal-Corrido","MIGUEL");
-            userGroup.setTitle("Plan Quincenal");
-            userGroups.add(userGroup);
-            
-            userGroup = null;
-            userGroup = services.createUsers9Template("men","Zona-D-Mensual-Corrido","MIGUEL");
-            userGroup.setTitle("Plan Mensual");
-            userGroups.add(userGroup);*/
-            
-       // }
-        //Note: falta transformar el objeto de grupo de usuarios a json
-        Gson gson = new Gson();
-        String jsonTemplate = gson.toJson(userGroups);
-        
-        try {
-            //Genera las fichas en la BD
-            ZonaDModelService.registerFichas(jsonTemplate);
-            
-            //Guarda el archivo json
-            ZonaDServicesUtils.generateJsonFile(jsonTemplate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }    
 }

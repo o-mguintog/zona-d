@@ -69,6 +69,18 @@ Inactive]]></commentInRDBMS>
 <ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="TARIFF" id="A71331E1-8A60-3A94-4FFA-D46E3BCB1CC2">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:13:52 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<importedID>C4B01E36-97AF-74A1-8C81-B894447A1CCC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F1E91F7E-E604-D5A3-646B-B17FDD527ECF" name="ZD_PROFILES_PK">
@@ -77,6 +89,17 @@ Inactive]]></commentInRDBMS>
 <ownerDesignName>Zona-D-Model</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7E04F96C-301D-742E-D7E0-8C78BE8AC1C1" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_PROFILES_PK">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:13:52 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<importedID>C07386A8-73DD-193B-8082-8C017CF43A25</importedID>
+<indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2"/>

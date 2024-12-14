@@ -96,6 +96,17 @@ Fisico]]></commentInRDBMS>
 <colUsage columnID="80F163C4-22D0-C3A4-6F48-D7AEFFFC973C"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="02076C7B-461F-FD29-ACC2-CD0B2E957BF8" schemaObject="1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB" name="ZD_CONTACTS_PK">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:16:18 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<importedID>7A658D34-C809-0E71-871F-F7B33B2FD736</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="80F163C4-22D0-C3A4-6F48-D7AEFFFC973C"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="660C8030-69DB-7BE5-D2E5-E7457C257112" name="ZD_CONTACTS_ZD_POINT_SALES_FK">
 <createdBy>o-mgu</createdBy>
 <createdTime>2024-11-25 05:20:21 UTC</createdTime>

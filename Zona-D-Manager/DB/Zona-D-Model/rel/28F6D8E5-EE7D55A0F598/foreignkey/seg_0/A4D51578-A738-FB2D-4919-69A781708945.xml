@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A4D51578-A738-FB2D-4919-69A781708945" containerWithKeyObject="DA963C2D-FDBD-628F-7B30-407F75ABD48C" localFKIndex="22A6D7C3-8AE3-F9AD-894C-39DAC48CB82F" name="ZD_FICHAS_ZD_VENDOR_FK">
+<sourceConnName>ZonaD</sourceConnName>
+<sourceObjSchema>Zona-D</sourceObjSchema>
+<sourceObjName>ZD_USERS_POINT_SALES_FK</sourceObjName>
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:21:46 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<referredTableLongName>Zona-D.ZD_VENDOR</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1F047135-F25C-F85C-A200-7C048EA3C67E</referredTableID>
+<keyObject>F4562680-F808-67CB-762B-5B71FB74E279</keyObject>
+<referredKeyID>F4562680-F808-67CB-762B-5B71FB74E279</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>VENDOR_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

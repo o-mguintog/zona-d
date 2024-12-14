@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="ZD_PROFILES" directorySegmentName="seg_0" id="8A616920-77DF-C461-5900-1E9DCBE70C9E">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<schemaObject>1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3028C75D-7443-B170-1879-D306EBDAA1E9</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CODE_PROFILE" id="265E9D99-9DA6-7C1F-5414-A8FFDA3AD5A2">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TARIFF" id="A71331E1-8A60-3A94-4FFA-D46E3BCB1CC2">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:13:52 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PROFILE_NAME" id="BC4DBCE0-0F74-CEB8-37FE-81242C3FF87F">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PROFILE_TIME" id="BE874FB9-0CB3-8797-C780-F65081D042D3">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUS" id="CDCC040B-BE40-E1EC-8B7F-53487D48B85B">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<defaultValue>&apos;Active&apos;</defaultValue>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="ZD_PROFILES_PK" id="7E04F96C-301D-742E-D7E0-8C78BE8AC1C1">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:13:52 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<schemaObject>1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB</schemaObject>
+<segment>57F020E7-1A22-A33F-1BD9-5D74C011962D</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ZD_PROFILES_PK" id="F1E91F7E-E604-D5A3-646B-B17FDD527ECF">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:10 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<segment>36A779FB-E6D7-F478-2A68-C5157B16B73D</segment>
+<tableSpace>5BAE54B9-E796-508F-99E3-7326B0A6D897</tableSpace>
+<existingIndex>7E04F96C-301D-742E-D7E0-8C78BE8AC1C1</existingIndex>
+<indexSegment>36A779FB-E6D7-F478-2A68-C5157B16B73D</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

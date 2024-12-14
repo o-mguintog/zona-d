@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="CONTACT_TGR" directorySegmentName="seg_0" id="DD48D039-9090-2D65-1D7E-4CEB703E75B1">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:15:57 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+
+SELECT CONTACT_SEQ.NEXTVAL
+  INTO   :NEW.CONTACT_ID
+  FROM   DUAL;
+END; 
+]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>0E301316-E54A-04D8-3D02-7738C7E3DEAE</owner>
+<table>317C6D13-DB97-A56C-32C3-51160A23A8F1</table>
+</TriggerOraclev10g>

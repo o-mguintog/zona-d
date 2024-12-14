@@ -136,17 +136,34 @@ public class ZonaDDB {
         
         return response;
     }
-    
+
+    /**
+     * Convierte el tipo de dato clob a String.
+     *
+     * @param clob Tipo de dato Clob.
+     * @return Cadena de tipo json.
+     *
+     * @throws SQLException Propaga excepci&oacute; de tipo sql.
+     * @throws IOException Propaga la excepci&oacute;n de tipo io.
+     */
+    @SuppressWarnings("oracle.jdeveloper.java.nested-assignment")
     public static String getClobString(Clob clob) throws SQLException, IOException {
+            
+            //Verifica que el clob tenga valor.
             if(clob == null){
                 return null;
             }
+            
             BufferedReader stringReader = new BufferedReader(clob.getCharacterStream());
             String singleLine = null;
             StringBuffer strBuff = new StringBuffer();
+            
+            //Itera sobre el clob.
             while ((singleLine = stringReader.readLine()) != null) {
                 strBuff.append(singleLine);
             }
+            
+            //Regresa la cadena de tipo string.
             return strBuff.toString();
         }
 
@@ -353,8 +370,7 @@ public class ZonaDDB {
                     
                     e.printStackTrace();
                 }
-            }
-        
+            }        
         }
     }
 }

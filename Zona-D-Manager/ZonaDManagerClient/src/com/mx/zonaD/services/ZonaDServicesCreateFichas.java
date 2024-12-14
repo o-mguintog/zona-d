@@ -39,7 +39,7 @@ public class ZonaDServicesCreateFichas {
     @SuppressWarnings("oracle.jdeveloper.java.nested-assignment")
     public static FichasResponseType getFichasToCreate(){
         
-        File doc = new File("createFichas.json");
+        File doc = new File("C:\\zona-d-schedulers\\createFichas.json");
         FichasResponseType response = null;
         BufferedReader obj;
         

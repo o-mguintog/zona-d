@@ -4,12 +4,25 @@
 <createdTime>2024-11-24 21:11:05 UTC</createdTime>
 <ownerDesignName>Zona-D-Model</ownerDesignName>
 <shouldBeOpen>true</shouldBeOpen>
-<selectedRDBMSSite>79C73AAF-E1A7-E669-7DF0-025EE81A2AFC</selectedRDBMSSite>
+<selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
+<redirectConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>ZonaD</connName>
+<connUser>&quot;Zona-D&quot;</connUser>
+<connType>1</connType>
+<syncSelected>-1</syncSelected>
+</redirectConnectionStamp>
 <importConnectionStamps>
 <importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
 <connName>Zona-D</connName>
 <connUser>&quot;Zona-D&quot;</connUser>
 <connType>1</connType>
+<syncSelected>1</syncSelected>
+</importConnectionStamp>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>ZonaD</connName>
+<connUser>&quot;Zona-D&quot;</connUser>
+<connType>1</connType>
+<syncSelected>1</syncSelected>
 </importConnectionStamp>
 </importConnectionStamps>
 </relationalModel>

@@ -5,4 +5,18 @@
 <ownerDesignName>Zona-D-Model</ownerDesignName>
 <capitalNames>false</capitalNames>
 <designId>476CD0EA-51F5-5A22-B93F-0D48377B8ECB</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="02AF4910-B839-B668-F17D-3081B662507B">
+<designStoragePath>C:\Users\Zona-D\Desktop\zona-d\Zona-D-Manager\DB</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="582310EA-5407-20CD-71FD-AEC141DC8C31">
+<designStoragePath>C:\Users\Zona-D\Desktop\zona-d\Zona-D-Manager\DB</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="0A796A17-EC7E-6BF3-FA2A-B6E373C6EE4D">
+<designStoragePath>C:\Users\Zona-D\Desktop\zona-d\Zona-D-Manager\DB</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="685794B3-802B-365C-2CF2-BE94C672A21B">
+<designStoragePath>C:\Users\Zona-D\Desktop\zona-d\Zona-D-Manager\DB</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
 </OSDM_Design>

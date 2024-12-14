@@ -14,7 +14,11 @@ public class ZonaDServicesSchedulerDisabled {
     public ZonaDServicesSchedulerDisabled() {
         super();
     }
-    
+
+    /**
+     * Proceso para deshabilitar las fichas en la BD y en Mikrotik.
+     * @param args Argumentos.
+     */
     public static void main(String[] args) {
        
        ZonaDServices services = new ZonaDServices();

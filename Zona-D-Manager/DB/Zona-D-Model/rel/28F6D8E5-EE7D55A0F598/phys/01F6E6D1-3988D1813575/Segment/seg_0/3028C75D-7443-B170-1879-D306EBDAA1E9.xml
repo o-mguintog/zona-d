@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SegmentOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.SegmentOraclev10g" name="Storage4" directorySegmentName="seg_0" id="3028C75D-7443-B170-1879-D306EBDAA1E9">
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:09:30 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<scInitialExtent>65536</scInitialExtent>
+<scMaxExtents>2147483645</scMaxExtents>
+<scNextExtent>1048576</scNextExtent>
+</SegmentOraclev10g>

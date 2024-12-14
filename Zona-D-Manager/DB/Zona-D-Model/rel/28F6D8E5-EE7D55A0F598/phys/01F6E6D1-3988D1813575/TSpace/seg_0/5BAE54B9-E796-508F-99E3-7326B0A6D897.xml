@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableSpaceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableSpaceOraclev10g" name="USERS" directorySegmentName="seg_0" id="5BAE54B9-E796-508F-99E3-7326B0A6D897">
+<sourceConnName>ZonaD</sourceConnName>
+<sourceObjName>USERS</sourceObjName>
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:08:47 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<dsInitialExtent>65536</dsInitialExtent>
+<dsMaxExtents>2147483645</dsMaxExtents>
+<emUniformSize>0</emUniformSize>
+<extentManagement>LOCAL</extentManagement>
+<minExtLen>65536</minExtLen>
+<dsCompression>NOCOMPRESS</dsCompression>
+<encrypt>NO</encrypt>
+<fileType>SMALLFILE</fileType>
+<inMemory>NO</inMemory>
+<dataFiles>
+<DataFile class="oracle.dbtools.crest.model.design.storage.oracle.v10g.DataFileOraclev10g" name="USERS01.DBF" id="9BBC76EE-82F6-F9B3-7FB7-623AF96DA977">
+<sourceConnName>ZonaD</sourceConnName>
+<sourceObjName>C:\APP\ZONA-D\PRODUCT\21C\ORADATA\XE\USERS01.DBF</sourceObjName>
+<createdBy>Zona-D</createdBy>
+<createdTime>2024-12-14 06:22:48 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<autoextend>ON</autoextend>
+<fileName>C:\APP\ZONA-D\PRODUCT\21C\ORADATA\XE\USERS01.DBF</fileName>
+<nextBlockSize>1280</nextBlockSize>
+<size>5120</size>
+</DataFile>
+</dataFiles>
+</TableSpaceOraclev10g>
