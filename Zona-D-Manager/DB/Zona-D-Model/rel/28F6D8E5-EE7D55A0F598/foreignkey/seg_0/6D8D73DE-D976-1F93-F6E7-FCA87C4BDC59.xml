@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6D8D73DE-D976-1F93-F6E7-FCA87C4BDC59" containerWithKeyObject="DA963C2D-FDBD-628F-7B30-407F75ABD48C" localFKIndex="AD5E0D77-D215-EEDB-44CC-A718B40EE374" name="ZD_FICHAS_ZD_PROMOTIONS_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:40:58 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<referredTableLongName>Zona-D.ZD_PROMOTIONS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>3E0145DB-71BD-3635-9F8A-748873B95814</referredTableID>
+<keyObject>301D1347-CF00-3D78-D690-E36568A72E6A</keyObject>
+<referredKeyID>301D1347-CF00-3D78-D690-E36568A72E6A</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>PROMOTION_CODE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

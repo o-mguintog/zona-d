@@ -7,7 +7,7 @@
 --   tipo:      Oracle Database 12cR2
 
 alter session set "_ORACLE_SCRIPT"=true; 
-CREATE USER "Zona-D2" IDENTIFIED BY "1234";
+CREATE USER "Zona-D" IDENTIFIED BY "1234";
 
 
 ALTER USER "Zona-D"
@@ -484,3 +484,84 @@ commit;
 -- 
 -- ERRORS                                   0
 -- WARNINGS                                 0
+
+
+--CAMBIOS 14/12/2024
+-- Generado por Oracle SQL Developer Data Modeler 23.1.0.087.0806
+--   en:        2024-12-14 22:14:21 CST
+--   sitio:      Oracle Database 21c
+--   tipo:      Oracle Database 21c
+
+
+
+
+CREATE TABLE "Zona-D".zd_promotions (
+    promotion_code VARCHAR2(50 CHAR) NOT NULL,
+    name           VARCHAR2(50 CHAR),
+    description    VARCHAR2(500 CHAR),
+    discount       NUMBER(2),
+    status         VARCHAR2(10 CHAR) DEFAULT 'Active'
+)
+LOGGING;
+
+ALTER TABLE "Zona-D".zd_promotions
+    ADD CONSTRAINT status_vendor_2 CHECK ( status IN ( 'Active', 'Inactive' ) );
+
+COMMENT ON COLUMN "Zona-D".zd_promotions.promotion_code IS
+    'Código de la promoción';
+
+COMMENT ON COLUMN "Zona-D".zd_promotions.name IS
+    'Nombre de la promoción';
+
+COMMENT ON COLUMN "Zona-D".zd_promotions.description IS
+    'Descripción de la promoción';
+
+COMMENT ON COLUMN "Zona-D".zd_promotions.discount IS
+    'Porcentaje de descuento';
+
+COMMENT ON COLUMN "Zona-D".zd_promotions.status IS
+    'Active, Inactive';
+
+ALTER TABLE "Zona-D".zd_promotions ADD CONSTRAINT zd_promotions_pk PRIMARY KEY ( promotion_code );
+
+--2
+
+
+
+ALTER TABLE "Zona-D".zd_fichas MOVE
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 );
+ALTER TABLE "Zona-D".zd_fichas MODIFY (
+    profile null
+);
+ALTER TABLE "Zona-D".zd_fichas MODIFY (
+    vendor_id null
+);
+ALTER TABLE "Zona-D".zd_fichas MODIFY (
+    creation_date DEFAULT sysdate
+);
+ALTER TABLE "Zona-D".zd_fichas ADD (
+    comments VARCHAR2(2000 BYTE)
+);
+ALTER TABLE "Zona-D".zd_fichas ADD (
+    is_payment VARCHAR2(5 BYTE) DEFAULT 'N'
+);
+ALTER TABLE "Zona-D".zd_fichas ADD (
+    promotion_code VARCHAR2(50 CHAR)
+);
+
+COMMENT ON COLUMN "Zona-D".zd_fichas.promotion_code IS
+    'Código de la promoción';
+ALTER INDEX "Zona-D".users_pk REBUILD
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 );
+ALTER INDEX "Zona-D".users_pk REBUILD
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 );
+ALTER TABLE "Zona-D".zd_fichas ADD CHECK ( "NAME" IS NOT NULL );
+ALTER TABLE "Zona-D".zd_fichas ADD CHECK ( "PROFILE" IS NOT NULL );
+ALTER TABLE "Zona-D".zd_fichas ADD CHECK ( "VENDOR_ID" IS NOT NULL );
+ALTER TABLE "Zona-D".zd_fichas ADD CHECK ( "CREATION_DATE" IS NOT NULL );
+ALTER TABLE "Zona-D".zd_fichas
+    ADD CONSTRAINT zd_fichas_zd_promotions_fk FOREIGN KEY ( promotion_code )
+        REFERENCES "Zona-D".zd_promotions ( promotion_code )
+    NOT DEFERRABLE;
+ALTER TABLE "Zona-D".zd_fichas RENAME CONSTRAINT zd_users_point_sales_fk TO zd_fichas_zd_vendor_fk;
+

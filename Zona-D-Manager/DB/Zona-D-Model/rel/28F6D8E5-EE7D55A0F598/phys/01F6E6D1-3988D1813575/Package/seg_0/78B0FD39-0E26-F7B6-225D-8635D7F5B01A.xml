@@ -21,202 +21,318 @@ END ZONA_D_PROCESS_PKG;</source>
 <createdTime>2024-12-14 06:27:30 UTC</createdTime>
 <ownerDesignName>Zona-D-Model</ownerDesignName>
 <owner><![CDATA[0E301316-E54A-04D8-3D02-7738C7E3DEAE]]></owner>
-<source>create or replace NONEDITIONABLE PACKAGE BODY &quot;Zona-D&quot;.ZONA_D_PROCESS_PKG AS
-    
-    
-    
-    FUNCTION GET_FICHA_END_DATE(PIC_FICHA VARCHAR2)RETURN DATE 
-    AS
-        L_END_DATE DATE;
-    BEGIN
+<source>create or replace NONEDITIONABLE PACKAGE BODY          &quot;Zona-D&quot;.ZONA_D_PROCESS_PKG AS
 
+    FUNCTION get_ficha_end_date (
+        pic_ficha VARCHAR2
+    ) RETURN DATE AS
+        l_end_date DATE;
+    BEGIN
         BEGIN
-            SELECT SYSDATE + Profiles.PROFILE_TIME END_DATE
-            INTO L_END_DATE
-            FROM ZD_FICHAS Fichas,
-                 ZD_PROFILES Profiles
-            WHERE 1 = 1
-              AND Fichas.NAME  = PIC_FICHA
-              AND Profiles.CODE_PROFILE = Fichas.PROFILE;
-        EXCEPTION 
-            WHEN NO_DATA_FOUND THEN
-                L_END_DATE := NULL;
+            SELECT
+                sysdate + profiles.profile_time end_date
+            INTO l_end_date
+            FROM
+                zd_fichas   fichas,
+                zd_profiles profiles
+            WHERE
+                    1 = 1
+                AND fichas.name = pic_ficha
+                AND profiles.code_profile = fichas.profile;
+ 
+        EXCEPTION
+            WHEN no_data_found THEN
+                l_end_date := NULL;
                 dbms_output.put_line(&apos;error&apos;);
-            WHEN OTHERS THEN 
+            WHEN OTHERS THEN
                 dbms_output.put_line(&apos;error&apos;);
         END;
 
-
-    RETURN L_END_DATE;
-
+        RETURN l_end_date;
     END;
 
-    PROCEDURE ACTIVE_NEW_FICHAS_PS(PIC_FICHAS VARCHAR2) AS
-        PRAGMA AUTONOMOUS_TRANSACTION;
+    PROCEDURE active_new_fichas_ps (
+        pic_fichas VARCHAR2
+    ) AS
 
-        cursor cur_fichas_new_cur is
-            select Ficha,
-                      Status
-                from json_table(PIC_FICHAS,&apos;$.responseFichas[*]&apos;
-                                columns (ficha varchar2(100) path &apos;$.ficha&apos; ,
-                                         status varchar2(100) path &apos;$.status&apos; ))
-            WHERE Status =&apos;ACTIVE&apos;;
+        PRAGMA autonomous_transaction;
+        CURSOR cur_fichas_new_cur IS
+        SELECT
+            ficha,
+            status
+        FROM
+            JSON_TABLE ( pic_fichas, &apos;$.responseFichas[*]&apos;
+                COLUMNS (
+                    ficha VARCHAR2 ( 100 ) PATH &apos;$.ficha&apos;,
+                    status VARCHAR2 ( 100 ) PATH &apos;$.status&apos;
+                )
+            )
+        WHERE
+            status = &apos;ACTIVE&apos;;
 
-            L_END_DATE DATE;
+        l_end_date DATE;
     BEGIN
-
-        FOR cur_fichas_new_rec IN cur_fichas_new_cur
-        LOOP
+        FOR cur_fichas_new_rec IN cur_fichas_new_cur LOOP
 
             --Obtiene la fecha fin
 
-            L_END_DATE := GET_FICHA_END_DATE(cur_fichas_new_rec.Ficha);        
+            l_end_date := get_ficha_end_date(cur_fichas_new_rec.ficha);        
 
             --Actualiza la activación
-            UPDATE ZD_FICHAS FichasOld
-                SET FichasOld.STATUS = cur_fichas_new_rec.status,
-                    FichasOld.begin_date = sysdate,
-                    FichasOld.end_date = L_END_DATE
-            WHERE 1 = 1
-              AND FichasOld.NAME = cur_fichas_new_rec.FICHA;
+            UPDATE zd_fichas fichasold
+            SET
+                fichasold.status = cur_fichas_new_rec.status,
+                fichasold.begin_date = sysdate,
+                fichasold.end_date = l_end_date
+            WHERE
+                    1 = 1
+                AND fichasold.name = cur_fichas_new_rec.ficha;
 
         END LOOP;
 
         COMMIT;
+    END active_new_fichas_ps;
 
-    END ACTIVE_NEW_FICHAS_PS;
+    PROCEDURE disabled_fichas_ps (
+        pic_fichas VARCHAR2
+    ) AS
 
-
-    PROCEDURE DISABLED_FICHAS_PS(PIC_FICHAS VARCHAR2) AS
-        PRAGMA AUTONOMOUS_TRANSACTION;
-
-    cursor cur_fichas_new_cur is
-        select Ficha,
-                  Status
-            from json_table(PIC_FICHAS,&apos;$.responseFichas[*]&apos;
-                            columns (ficha varchar2(100) path &apos;$.ficha&apos; ,
-                                     status varchar2(100) path &apos;$.status&apos; ))
-        WHERE Status =&apos;FINISHED&apos;;
+        PRAGMA autonomous_transaction;
+        CURSOR cur_fichas_new_cur IS
+        SELECT
+            ficha,
+            status
+        FROM
+            JSON_TABLE ( pic_fichas, &apos;$.responseFichas[*]&apos;
+                COLUMNS (
+                    ficha VARCHAR2 ( 100 ) PATH &apos;$.ficha&apos;,
+                    status VARCHAR2 ( 100 ) PATH &apos;$.status&apos;
+                )
+            )
+        WHERE
+            status = &apos;FINISHED&apos;;
 
     BEGIN
-
-        FOR cur_fichas_new_rec IN cur_fichas_new_cur
-        LOOP
+        FOR cur_fichas_new_rec IN cur_fichas_new_cur LOOP
 
             --Actualiza la activación
-            UPDATE ZD_FICHAS FichasOld
-                SET FichasOld.STATUS = cur_fichas_new_rec.status                
-            WHERE 1 = 1
-              AND FichasOld.NAME = cur_fichas_new_rec.FICHA;
+            UPDATE zd_fichas fichasold
+            SET
+                fichasold.status = cur_fichas_new_rec.status
+            WHERE
+                    1 = 1
+                AND fichasold.name = cur_fichas_new_rec.ficha;
 
         END LOOP;
 
         COMMIT;
-
     END;
 
-    PROCEDURE REGISTER_FICHAS_PS(PIC_FICHAS VARCHAR2)AS
+    PROCEDURE register_fichas_ps (
+        pic_fichas VARCHAR2
+    ) AS
 
-        PRAGMA AUTONOMOUS_TRANSACTION;
-
-        CURSOR NEW_FICHAS_CUR IS
-            select title,
-                   profile,
-                   vendor,
-                   username1,
-                   username2,
-                   username3,
-                   username4,
-                   username5,
-                   username6,
-                   username7,
-                   username8,
-                   username9,
-                   username10,
-                   username11,
-                   username12
-
-                from json_table(PIC_FICHAS,&apos;$[*]&apos;
-                columns (title varchar2(100) path &apos;$.title&apos; ,
-                         profile varchar2(100) path &apos;$.profileCode&apos;,
-
-                         vendor varchar2(100) path &apos;$.vendor&apos;,
-                         username1 varchar2(100) path &apos;$.username1&apos;,
-                         username2 varchar2(100) path &apos;$.username2&apos;,
-                         username3 varchar2(100) path &apos;$.username3&apos;,
-                         username4 varchar2(100) path &apos;$.username4&apos;,
-                         username5 varchar2(100) path &apos;$.username5&apos;,
-                         username6 varchar2(100) path &apos;$.username6&apos;,
-                         username7 varchar2(100) path &apos;$.username7&apos;,
-                         username8 varchar2(100) path &apos;$.username8&apos;,
-                         username9 varchar2(100) path &apos;$.username9&apos;,
-                         username10 varchar2(100) path &apos;$.username10&apos;,
-                         username11 varchar2(100) path &apos;$.username11&apos;,
-                         username12 varchar2(100) path &apos;$.username12&apos;));
-
-
+        PRAGMA autonomous_transaction;
+        CURSOR new_fichas_cur IS
+        SELECT
+            title,
+            profile,
+            vendor,
+            username1,
+            username2,
+            username3,
+            username4,
+            username5,
+            username6,
+            username7,
+            username8,
+            username9,
+            username10,
+            username11,
+            username12,
+            promotion
+        FROM
+            JSON_TABLE ( pic_fichas, &apos;$[*]&apos;
+                COLUMNS (
+                    title VARCHAR2 ( 100 ) PATH &apos;$.title&apos;,
+                    profile VARCHAR2 ( 100 ) PATH &apos;$.profileCode&apos;,
+                    vendor VARCHAR2 ( 100 ) PATH &apos;$.vendor&apos;,
+                    username1 VARCHAR2 ( 100 ) PATH &apos;$.username1&apos;,
+                    username2 VARCHAR2 ( 100 ) PATH &apos;$.username2&apos;,
+                    username3 VARCHAR2 ( 100 ) PATH &apos;$.username3&apos;,
+                    username4 VARCHAR2 ( 100 ) PATH &apos;$.username4&apos;,
+                    username5 VARCHAR2 ( 100 ) PATH &apos;$.username5&apos;,
+                    username6 VARCHAR2 ( 100 ) PATH &apos;$.username6&apos;,
+                    username7 VARCHAR2 ( 100 ) PATH &apos;$.username7&apos;,
+                    username8 VARCHAR2 ( 100 ) PATH &apos;$.username8&apos;,
+                    username9 VARCHAR2 ( 100 ) PATH &apos;$.username9&apos;,
+                    username10 VARCHAR2 ( 100 ) PATH &apos;$.username10&apos;,
+                    username11 VARCHAR2 ( 100 ) PATH &apos;$.username11&apos;,
+                    username12 VARCHAR2 ( 100 ) PATH &apos;$.username12&apos;,
+                    promotion  VARCHAR2 ( 100 ) PATH &apos;$.promotion&apos;
+                )
+            );
 
     BEGIN
-
         BEGIN
             --Itera sobre la plantilla de usuarios
-            FOR NEW_FICHAS_REC IN NEW_FICHAS_CUR LOOP
+            FOR new_fichas_rec IN new_fichas_cur LOOP
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username1,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME1,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username2,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME2,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username3,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME3,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username4,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME4,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username5,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME5,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username6,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME6,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username7,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME7,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username8,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME8,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username9,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME9,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);                                                      
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username10,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME10,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);    
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username11,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME11,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);                                                      
+                INSERT INTO zd_fichas (
+                    name,
+                    profile,
+                    vendor_id,
+                    promotion_code
+                ) VALUES (
+                    new_fichas_rec.username12,
+                    new_fichas_rec.profile,
+                    new_fichas_rec.vendor,
+                    new_fichas_rec.promotion
+                );
 
-                INSERT INTO ZD_FICHAS (NAME,PROFILE,VENDOR_ID) VALUES(NEW_FICHAS_REC.USERNAME12,
-                                                                      NEW_FICHAS_REC.PROFILE,
-                                                                      NEW_FICHAS_REC.VENDOR);                                                                       
             END LOOP;
 
             COMMIT;
-        EXCEPTION WHEN OTHERS THEN
-            dbms_output.put_line(&apos;Error&apos;||SQLCODE||&apos; -ERROR- &apos;||SQLERRM);
+        EXCEPTION
+            WHEN OTHERS THEN
+                dbms_output.put_line(&apos;Error&apos;
+                                     || sqlcode
+                                     || &apos; -ERROR- &apos;
+                                     || sqlerrm);
         END;
     END;
 
-END ZONA_D_PROCESS_PKG;</source>
+END zona_d_process_pkg;</source>
 </body>
 </PackageOracle>

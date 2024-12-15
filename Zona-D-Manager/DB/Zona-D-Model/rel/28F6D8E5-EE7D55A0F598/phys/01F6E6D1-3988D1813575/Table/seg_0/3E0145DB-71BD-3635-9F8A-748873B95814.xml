@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="ZD_PROMOTIONS" directorySegmentName="seg_0" id="3E0145DB-71BD-3635-9F8A-748873B95814">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:33:17 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<schemaObject>1BE0DBC5-CD13-6990-DF41-FF5AD7C492EB</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DISCOUNT" id="073205F9-8413-1717-7F7B-37F2B2C9F094">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:38:32 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUS" id="12E8F28D-310B-08D1-D471-4B03CABE6CA4">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:36:49 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<defaultValue>Active</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="PROMOTION_CODE" id="464063D8-B3BD-8387-AC59-C7F190E3412D">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:36:12 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DESCRIPTION" id="5A1FEE2C-3453-749A-0674-C6992FC88CCB">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:36:12 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="6B204996-E1BA-B04F-B846-C4B928E987B1">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:36:12 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ZD_PROMOTIONS_PK" id="301D1347-CF00-3D78-D690-E36568A72E6A">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:40:35 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

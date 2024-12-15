@@ -60,7 +60,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>30 CHAR</dataTypeSize>
-<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="A4D51578-A738-FB2D-4919-69A781708945" referredColumn="B222FAE6-7166-D8E5-F80C-1B001CDEC779"/>
@@ -174,6 +174,22 @@ FINISHED]]></commentInRDBMS>
 <ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="PROMOTION_CODE" id="A780E027-0437-3457-5E86-873FC47BE443">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:39:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Código de la promoción]]></commentInRDBMS>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6D8D73DE-D976-1F93-F6E7-FCA87C4BDC59" referredColumn="464063D8-B3BD-8387-AC59-C7F190E3412D"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="6BACD1AF-6CE5-06E9-D380-0E6C46944D3C" name="USERS_PK">
@@ -221,6 +237,16 @@ FINISHED]]></commentInRDBMS>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="5E7F8930-823E-AC2B-81BE-60CB06A1DF44"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AD5E0D77-D215-EEDB-44CC-A718B40EE374" name="ZD_FICHAS_ZD_PROMOTIONS_FK">
+<createdBy>o-mgu</createdBy>
+<createdTime>2024-12-14 06:40:58 UTC</createdTime>
+<ownerDesignName>Zona-D-Model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A780E027-0437-3457-5E86-873FC47BE443"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
