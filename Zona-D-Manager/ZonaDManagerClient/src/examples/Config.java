@@ -7,7 +7,7 @@ package examples;
  */
 public class Config {
 
-    public static final String HOST = "192.168.1.68";
+    public static final String HOST = "Zona-D-HOME";
     
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "1234";

@@ -12,7 +12,7 @@ public class FichasType implements Serializable{
     /**
      * Versi&oacute;n de la clase.
      */
-    @SuppressWarnings("compatibility:-1494121101766681693")
+    @SuppressWarnings("compatibility:4961353881498876055")
     private static final long serialVersionUID = 1L;
 
     /**
@@ -34,6 +34,11 @@ public class FichasType implements Serializable{
      * Prefijo del nombre de la ficha.
      */
     private String prefijo;
+
+    /**
+     * Promoci&oacute;n.
+     */
+    private String promotion;
     
     /**
      * Constructor por defecto.
@@ -72,5 +77,13 @@ public class FichasType implements Serializable{
 
     public String getPrefijo() {
         return prefijo;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
+    }
+
+    public String getPromotion() {
+        return promotion;
     }
 }

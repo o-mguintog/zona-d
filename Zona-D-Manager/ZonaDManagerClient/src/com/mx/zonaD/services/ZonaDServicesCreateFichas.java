@@ -56,13 +56,7 @@ public class ZonaDServicesCreateFichas {
                 }                       
                 
                 Gson gson = new Gson();                        
-                response = gson.fromJson(buffer.toString(), FichasResponseType.class);
-                
-                if(response != null && response.getFichasProfile().size() >0){
-                    for (FichasType current :  response.getFichasProfile()){
-                        System.out.println("Package Name: "+current.getPackageName());
-                    }
-                }
+                response = gson.fromJson(buffer.toString(), FichasResponseType.class);                
                 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -105,7 +99,8 @@ public class ZonaDServicesCreateFichas {
                 UserType userGroup = null;
                 userGroup = services.createUsers9Template(currentFicha.getPrefijo(),
                                                         currentFicha.getPackageName(),
-                                                        currentFicha.getVendor());
+                                                        currentFicha.getVendor(),
+                                                        currentFicha.getPromotion());
                 userGroup.setTitle(currentFicha.getTitle());
                 userGroups.add(userGroup);  
                 

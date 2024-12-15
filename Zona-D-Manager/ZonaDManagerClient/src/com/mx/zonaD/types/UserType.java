@@ -12,8 +12,8 @@ public class UserType implements java.io.Serializable{
     /**
      * Versi&oacute;n de la clase.
      */
-    @SuppressWarnings("compatibility:6709120307475572961")
-    private static final long serialVersionUID = 1L;
+    @SuppressWarnings("compatibility:-1669147638349291328")
+    private static final long serialVersionUID = 2L;
 
 
     /**
@@ -145,6 +145,11 @@ public class UserType implements java.io.Serializable{
      * Paquete asignado.
      */
     private String profileCode;
+
+    /**
+     * Clave de la promoci&oacute;n.
+     */
+    private String promotion;
 
 
     /**
@@ -374,5 +379,13 @@ public class UserType implements java.io.Serializable{
 
     public String getVendor() {
         return vendor;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
+    }
+
+    public String getPromotion() {
+        return promotion;
     }
 }

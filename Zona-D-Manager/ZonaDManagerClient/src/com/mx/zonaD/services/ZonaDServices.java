@@ -74,7 +74,7 @@ public class ZonaDServices {
      *      
      * @param paquete Nombre del paquete.
      */
-    public UserType createUsers9Template(String prefijo, String paquete, String vendor){
+    public UserType createUsers9Template(String prefijo, String paquete, String vendor, String promotion){
         
         UserType userGroup = new UserType();        
         
@@ -82,7 +82,7 @@ public class ZonaDServices {
             //Genera la conexión a mikrotik
             connect();
             
-            userGroup = createUsers(prefijo,12,paquete,vendor);
+            userGroup = createUsers(prefijo,12,paquete,vendor, promotion);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -113,7 +113,7 @@ public class ZonaDServices {
      * @param numUsuarios N&uacute;mero de usuarios a generar
      * @param paquete Nombre del paquete.     
      */
-    public UserType createUsers(String prefijo, Integer numUsuarios, String paquete, String vendor){
+    public UserType createUsers(String prefijo, Integer numUsuarios, String paquete, String vendor, String promotion){
         
         UserType usersPackages = new UserType();
         //Verifica la conexión a mikrotik
@@ -124,7 +124,7 @@ public class ZonaDServices {
                 //Itera sobre los usuarios a crear
                 for(int numUser =1; numUser<= numUsuarios; numUser++){
                     //Obtiene la sentencia de creación de usuarios
-                    String statement = getStatementCreateUser(prefijo,paquete,usersPackages,numUser,vendor);                    
+                    String statement = getStatementCreateUser(prefijo,paquete,usersPackages,numUser,vendor,promotion);                    
                     
                     //Ejecuta la sentencia para la creación de usuarios
                     mkConnection.execute(statement);
@@ -145,7 +145,7 @@ public class ZonaDServices {
      * 
      * @return Sentencia a ejecutar.
      */
-    private String getStatementCreateUser(String prefijo, String paquete,UserType usersPackages,Integer numUser, String vendor){
+    private String getStatementCreateUser(String prefijo, String paquete,UserType usersPackages,Integer numUser, String vendor, String promotion){
         
         final String CREATE_USER="/ip/hotspot/user/add ";
         
@@ -198,7 +198,7 @@ public class ZonaDServices {
         statement.append(limit);  
         
         //Inicializa el usuario en el objeto usuarios        
-        initUserPackage(usersPackages,numUser,user,password, prefijo.toUpperCase(), vendor);
+        initUserPackage(usersPackages,numUser,user,password, prefijo.toUpperCase(), vendor, promotion);
         
         
         return statement.toString();
@@ -211,7 +211,7 @@ public class ZonaDServices {
      * @param numUser N&uacute;mero de usuario.
      * @return Grupo de usuarios inicializados.
      */
-    private void initUserPackage(UserType userPackage, Integer numUser, String username, String password,String profileCode, String vendor){
+    private void initUserPackage(UserType userPackage, Integer numUser, String username, String password,String profileCode, String vendor, String promotion){
         
         switch(numUser){
             
@@ -273,7 +273,8 @@ public class ZonaDServices {
         }
         
         userPackage.setProfileCode(profileCode);
-        userPackage.setVendor(vendor);        
+        userPackage.setVendor(vendor);  
+        userPackage.setPromotion(promotion);
     }
 
     /**
